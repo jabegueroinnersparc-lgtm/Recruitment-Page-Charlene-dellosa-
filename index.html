@@ -830,7 +830,41 @@ input[type=checkbox]{width:22px;height:22px;margin:1px 0 0;padding:0;accent-colo
 </dialog>
 
 <script>
-const QUESTIONS = <?!= quizJson ?>;
+// Vercel serves this file as static HTML, so it cannot evaluate Apps Script
+// template tags. Keep a browser-safe fallback here; Apps Script can still
+// replace this value when it renders the page through its template engine.
+const QUESTIONS = window.__QUIZ__ || [
+  { q: { en: 'Do you have a PRC real estate license?', tl: 'May PRC real estate license ka ba?' }, options: [
+    { en: 'Yes, I am licensed', tl: 'Oo, lisensyado ako' },
+    { en: 'I am studying or applying for it', tl: 'Nag-aaral o nag-a-apply ako nito' },
+    { en: 'Not yet', tl: 'Wala pa' }
+  ] },
+  { q: { en: 'Have you worked in sales, customer service, or another client-facing role?', tl: 'Nakapagtrabaho ka na ba sa sales, customer service, o ibang trabahong may kliyente?' }, options: [
+    { en: 'Yes, 2 years or more', tl: 'Oo, 2 taon o higit pa' },
+    { en: 'Yes, less than 2 years', tl: 'Oo, wala pang 2 taon' },
+    { en: 'No experience yet', tl: 'Wala pang experience' }
+  ] },
+  { q: { en: 'How many hours per week can you commit to real estate?', tl: 'Ilang oras kada linggo ang maibibigay mo sa real estate?' }, options: [
+    { en: 'Full-time (40+ hours a week)', tl: 'Full-time (40+ oras kada linggo)' },
+    { en: 'Part-time (15 to 39 hours a week)', tl: 'Part-time (15 hanggang 39 oras kada linggo)' },
+    { en: 'Fewer than 15 hours a week', tl: 'Wala pang 15 oras kada linggo' }
+  ] },
+  { q: { en: 'Real estate income is commission-based. How do you feel about that?', tl: 'Ang kita sa real estate ay batay sa komisyon. Ano ang pakiramdam mo rito?' }, options: [
+    { en: 'Comfortable. I can cover my needs while I build my sales', tl: 'Komportable ako. Kaya kong tustusan ang pangangailangan ko habang bumubuo ng benta' },
+    { en: 'Okay with it, but I need income soon', tl: 'Okay ako rito, pero kailangan ko ng kita agad' },
+    { en: 'I need a fixed salary', tl: 'Kailangan ko ng fixed na sahod' }
+  ] },
+  { q: { en: 'Are you ready to use your phone and social media to market listings and follow up leads?', tl: 'Handa ka bang gumamit ng phone at social media para i-market ang listings at i-follow up ang leads?' }, options: [
+    { en: 'Yes, I already do this', tl: 'Oo, ginagawa ko na ito' },
+    { en: 'Yes, I am willing to learn', tl: 'Oo, handa akong matuto' },
+    { en: 'No', tl: 'Hindi' }
+  ] },
+  { q: { en: 'When can you start?', tl: 'Kailan ka puwedeng magsimula?' }, options: [
+    { en: 'Within 2 weeks', tl: 'Sa loob ng 2 linggo' },
+    { en: 'Within a month', tl: 'Sa loob ng isang buwan' },
+    { en: 'More than a month from now', tl: 'Mahigit isang buwan mula ngayon' }
+  ] }
+];
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const AGENT_PORTAL = 'https://innersparcagentportal.vercel.app/';
 const SOC = [
@@ -1218,16 +1252,32 @@ function submit(e) {
     if (retryErr) retryErr.textContent = t('err_generic');
   }
 
-  google.script.run
-    .withSuccessHandler(function (r) {
-      if (r && r.ok) {
-        result = { ok: !!r.qualified, tips: r.tips || [] };
-        try { localStorage.removeItem(QUIZ_STORAGE_KEY); } catch (e) {}
-        showResult(true);
-      } else fail();
-    })
-    .withFailureHandler(fail)
-    .submitApplication(d);
+  function handleResult(r) {
+    if (r && r.ok) {
+      result = { ok: !!r.qualified, tips: r.tips || [] };
+      try { localStorage.removeItem(QUIZ_STORAGE_KEY); } catch (e) {}
+      showResult(true);
+    } else fail();
+  }
+
+  // Apps Script keeps its native RPC path; Vercel uses the serverless proxy
+  // in /api/submit, which forwards the request to the Apps Script web app.
+  if (window.google && google.script && google.script.run) {
+    google.script.run
+      .withSuccessHandler(handleResult)
+      .withFailureHandler(fail)
+      .submitApplication(d);
+    return;
+  }
+
+  fetch('/api/submit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(d)
+  })
+    .then(function (response) { return response.json().then(function (body) { return { ok: response.ok, body: body }; }); })
+    .then(function (response) { if (response.ok) handleResult(response.body); else fail(); })
+    .catch(fail);
 }
 
 function showResult(fresh) {
