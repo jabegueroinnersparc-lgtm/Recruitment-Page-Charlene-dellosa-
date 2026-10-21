@@ -1368,9 +1368,23 @@ function submit(e) {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(d)
   })
-    .then(function (response) { return response.json().then(function (body) { return { ok: response.ok, body: body }; }); })
-    .then(function (response) { if (response.ok) handleResult(response.body); else fail(response.body && response.body.error); })
-    .catch(fail);
+    .then(function (response) {
+      return response.text().then(function (text) {
+        let body = null;
+        try { body = text ? JSON.parse(text) : null; } catch (parseError) {}
+        return { ok: response.ok, status: response.status, body: body };
+      });
+    })
+    .then(function (response) {
+      if (response.ok && response.body) {
+        handleResult(response.body);
+      } else if (response.status === 404) {
+        fail('The application service is not available yet. Please try again later.');
+      } else {
+        fail(response.body && response.body.error);
+      }
+    })
+    .catch(function () { fail(); });
 }
 
 function showResult(fresh) {
