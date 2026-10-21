@@ -1,6 +1,5 @@
 /**
  * Vercel serverless proxy for the Google Apps Script backend.
- * Set APPS_SCRIPT_URL in Vercel to the deployed Apps Script web-app URL.
  */
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -8,10 +7,7 @@ module.exports = async function handler(req, res) {
     return res.status(405).json({ ok: false, error: 'Method not allowed' });
   }
 
-  const target = process.env.APPS_SCRIPT_URL;
-  if (!target) {
-    return res.status(503).json({ ok: false, error: 'The application endpoint is not configured.' });
-  }
+  const target = 'https://script.google.com/macros/s/AKfycbwNT9B4YqIATpLPQTTTgnRhqfAuL8ilXivpe3RGjLo0teuuVFJMKg5qc-xaSGselNBZ/exec';
 
   try {
     const response = await fetch(target, {
