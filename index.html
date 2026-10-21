@@ -1350,7 +1350,7 @@ function submit(e) {
       result = { ok: !!r.qualified, tips: r.tips || [] };
       try { localStorage.removeItem(QUIZ_STORAGE_KEY); } catch (e) {}
       showResult(true);
-    } else fail();
+    } else fail(r && r.error);
   }
 
   // Apps Script keeps its native RPC path; Vercel uses the serverless proxy
