@@ -260,6 +260,21 @@ function doGet() {
     .setXFrameOptionsMode(HtmlService.XFrameOptionsMode.ALLOWALL);
 }
 
+/** JSON endpoint used by the Vercel /api/submit proxy. */
+function doPost(e) {
+  try {
+    const data = JSON.parse((e && e.postData && e.postData.contents) || '{}');
+    return ContentService
+      .createTextOutput(JSON.stringify(submitApplication(data)))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    console.error(err);
+    return ContentService
+      .createTextOutput(JSON.stringify({ ok: false, error: 'Invalid request.' }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
 function clean_(v, max) {
   let s = String(v || '').trim().slice(0, max || 200);
   if (/^[=+\-@]/.test(s)) s = "'" + s;   // block spreadsheet formula injection
