@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Explore real estate training, mentorship, and team opportunities with Charlene Dellosa in the Philippines.">
 <meta name="twitter:url" content="https://recruitment-charlenedellosa.vercel.app/">
 <meta name="twitter:image" content="https://recruitment-charlenedellosa.vercel.app/social-share.png">
-<link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1600" imagesrcset="https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w480 480w, https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w800 800w, https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1200 1200w, https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1600 1600w" imagesizes="(max-width:640px) 100vw, 56vw">
+<link rel="preload" as="image" href="https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1600" imagesrcset="https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w480 480w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w800 800w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1200 1200w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1600 1600w" imagesizes="(max-width:640px) 100vw, 56vw">
 <title>Charlene Dellosa Recruitment | Real Estate Team</title>
 <link rel="canonical" href="https://recruitment-charlenedellosa.vercel.app/">
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
@@ -648,6 +648,182 @@ input[type=checkbox]{width:22px;height:22px;margin:1px 0 0;padding:0;accent-colo
   }
 }
 
+
+/* =====================================================================
+   PREMIUM POLISH: hero image, motion, responsive refinements
+   ===================================================================== */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+img{max-width:100%}
+
+/* ---- Hero image frame: keeps the diagonal edge fixed while the photo moves inside it ---- */
+.hero-img .pic-mask{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 90% at 62% 38%,#127A5B 0%,#0D4E3C 48%,#0B3B2E 100%);clip-path:polygon(16% 0,100% 0,100% 100%,0 100%)}
+.hero-img .pic-mask .pic{clip-path:none;transform:scale(1.03);object-position:60% 15%;translate:var(--px,0px) calc(var(--py,0px) + var(--sy,0px));transition:translate .45s cubic-bezier(.2,.7,.2,1),opacity .6s ease;will-change:transform}
+.hero-img .pic.is-cleaning{opacity:0}
+body.page-ready .hero-img .pic{animation:heroZoomIn 2.6s cubic-bezier(.16,.8,.24,1) both,heroDrift 26s 2.6s ease-in-out infinite alternate}
+@keyframes heroZoomIn{from{transform:scale(1.12)}to{transform:scale(1.03)}}
+@keyframes heroDrift{from{transform:scale(1.03)}to{transform:scale(1.055)}}
+
+/* Metallic gold sheen on the diagonal stripe */
+.hero-img::before{background:linear-gradient(115deg,#9C7A22 0%,#B8902F 30%,#F3E6B6 48%,#B8902F 66%,#9C7A22 100%);background-size:260% 100%;animation:goldSheen 8s linear infinite}
+@keyframes goldSheen{from{background-position:130% 0}to{background-position:-130% 0}}
+
+/* Floating badge with live "ping" dot */
+.badge{animation:badgeFloat 5.5s ease-in-out infinite}
+.badge i{position:relative}
+.badge i::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--gold);animation:ping 2.2s ease-out infinite}
+@keyframes badgeFloat{50%{transform:translateY(-5px)}}
+@keyframes ping{to{transform:scale(3);opacity:0}}
+
+/* Breathing rings + soft emerald spotlight that follows the pointer on desktop */
+.hero{background:radial-gradient(560px circle at var(--mx,18%) var(--my,38%),rgba(15,123,90,.34),transparent 65%),var(--dark)}
+.hero::before{animation:ringBreath 10s ease-in-out infinite}
+.hero::after{animation:ringBreath 10s -5s ease-in-out infinite}
+@keyframes ringBreath{50%{transform:scale(1.09);opacity:.65}}
+
+/* Headline: soft blur-to-sharp word reveal (desktop/tablet only; phones stay lightweight) */
+@keyframes headlineWordIn{to{opacity:1;transform:translate3d(0,0,0);filter:blur(0)}}
+@media(min-width:641px){.hero h1 .headline-word{filter:blur(8px)}}
+
+/* Premium CTA: light sweep + lift */
+.btn[data-open]{position:relative;overflow:hidden;isolation:isolate}
+.btn[data-open]::after{content:"";position:absolute;top:0;bottom:0;left:-70%;width:45%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.6),transparent);transform:skewX(-20deg);animation:btnShine 5s 2.8s ease-in-out infinite;pointer-events:none;z-index:-1}
+@keyframes btnShine{0%{left:-70%}28%,100%{left:150%}}
+.btn:active{transform:scale(.97)}
+@media(hover:hover) and (pointer:fine){
+  .btn:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(11,59,46,.3),0 0 0 4px rgba(184,144,47,.2)}
+}
+
+/* Scroll reveals: smoother, softer easing */
+.rv{opacity:0;transform:translate3d(0,28px,0) scale(.985);transition:opacity .85s cubic-bezier(.2,.7,.2,1),transform .85s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+/* Section headings draw a gold underline as they appear */
+main section h2::after{content:"";display:block;width:0;height:3px;margin-top:12px;border-radius:3px;background:linear-gradient(90deg,var(--gold),var(--pale-gold));transition:width .9s .35s cubic-bezier(.2,.7,.2,1)}
+main section h2.in::after,main section h2:not(.rv)::after{width:64px}
+
+/* Card lift on mouse devices only */
+.pain-card,.why-card,.testimonial,.incentive-card,.grid4>div{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease,opacity .85s cubic-bezier(.2,.7,.2,1)}
+@media(hover:hover) and (pointer:fine){
+  .pain-card:hover,.why-card:hover,.testimonial:hover,.incentive-card:hover,.grid4>div:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(11,59,46,.16)}
+}
+
+/* Sticky mobile CTA glides in after the loader */
+body:not(.page-ready) .mobile-cta{opacity:0}
+body.page-ready .mobile-cta{animation:ctaIn .8s 1.6s cubic-bezier(.2,.8,.2,1) both}
+@keyframes ctaIn{from{opacity:0;transform:translateY(24px)}}
+
+/* ---- Responsive refinements ---- */
+@media(max-width:900px) and (min-width:641px){
+  .hero-img .pic-mask .pic{object-position:50% 30%}
+}
+@media(max-width:640px){
+  .hero-img .pic-mask{position:relative;inset:auto;clip-path:none;display:block;width:100%}
+  .hero-img .pic-mask .pic{transform:scale(1.02);object-position:50% 18%}
+  @keyframes heroZoomIn{from{transform:scale(1.1)}to{transform:scale(1.02)}}
+  @keyframes heroDrift{from{transform:scale(1.02)}to{transform:scale(1.04)}}
+  .hero .btn{width:100%}
+}
+@media(max-height:480px) and (orientation:landscape) and (max-width:950px){
+  .hero{min-height:0;padding-top:36px;padding-bottom:36px}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-img .pic-mask .pic{transform:none;translate:none}
+  .rv{opacity:1;transform:none}
+}
+
+/* =====================================================================
+   HERO SIZING FIX: balanced photo + headline on desktop and tablet
+   ===================================================================== */
+@media(min-width:901px){
+  .hero{min-height:clamp(540px,42vw,680px);padding:clamp(44px,5vw,80px) 0}
+  .hero h1{font-size:clamp(38px,4.3vw,58px);max-width:15ch}
+  .hero p{max-width:36ch}
+}
+@media(min-width:1200px){
+  .hero-img{width:49%}
+  .hero .copy{max-width:580px}
+}
+@media(min-width:1700px){
+  .hero-img{width:46%}
+}
+
+/* =====================================================================
+   PREMIUM POP-UP FORM
+   ===================================================================== */
+dialog:not(.image-lightbox){
+  border:0;border-radius:24px;width:min(640px,94vw);max-height:92dvh;
+  background:linear-gradient(180deg,#FFFEFA 0%,var(--cream) 100%);
+  box-shadow:0 50px 100px -24px rgba(3,20,15,.6),0 0 0 1px rgba(184,144,47,.35);
+  overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:rgba(184,144,47,.5) transparent
+}
+dialog:not(.image-lightbox)::before{content:"";display:block;position:sticky;top:0;z-index:4;height:5px;background:linear-gradient(90deg,var(--gold),var(--pale-gold),var(--emerald),var(--gold));background-size:200% 100%;animation:goldSheen 6s linear infinite}
+dialog:not(.image-lightbox)::backdrop{background:radial-gradient(circle at 50% 28%,rgba(15,123,90,.5),rgba(3,20,15,.93) 70%);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+
+/* header: glass bar, gold progress, round close button */
+dialog .dhead{position:sticky;top:5px;z-index:3;padding:16px 24px 12px;background:rgba(255,254,250,.86);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+dialog .track{height:8px;background:rgba(184,144,47,.2);border-radius:99px}
+dialog #bar{border-radius:99px;background:linear-gradient(90deg,var(--emerald),#2FA07A 55%,var(--gold));transition:width .7s cubic-bezier(.2,.8,.2,1);box-shadow:0 0 12px rgba(184,144,47,.45)}
+dialog #lab{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--emerald)}
+dialog #x{width:36px;height:36px;display:grid;place-items:center;padding:0;border-radius:50%;background:rgba(11,59,46,.07);font-size:22px;color:var(--dark);transition:background .25s,transform .35s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover) and (pointer:fine){dialog #x:hover{background:var(--dark);color:var(--cream);transform:rotate(90deg)}}
+
+/* content */
+dialog #body{padding:14px 30px 34px}
+dialog #body h2{font-size:clamp(25px,4.8vw,34px);line-height:1.1;color:var(--dark);margin-bottom:12px}
+dialog .quiz-reassure{color:#5a6165}
+dialog .quiz-guidance{display:inline-block;padding:6px 12px;border-radius:99px;background:rgba(15,123,90,.09);color:var(--emerald);font-weight:600;font-size:13.5px;margin-bottom:18px}
+
+/* answer choices as lettered cards */
+dialog #opts{counter-reset:opt;display:grid;gap:10px}
+dialog .opt{position:relative;display:flex;align-items:center;gap:14px;margin:0;padding:14px 46px 14px 14px;border:1.5px solid rgba(11,59,46,.13);border-radius:16px;background:#fff;box-shadow:0 1px 2px rgba(11,59,46,.05);font:600 16.5px/1.35 var(--sans);color:var(--ink);transition:border-color .25s,box-shadow .3s,background .25s,translate .3s cubic-bezier(.2,.8,.2,1),scale .2s}
+dialog .opt::before{counter-increment:opt;content:counter(opt,upper-alpha);flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(15,123,90,.1);color:var(--emerald);font:700 14px var(--sans);transition:background .25s,color .25s}
+dialog .opt::after{content:"";position:absolute;right:20px;top:50%;width:9px;height:9px;border-right:2.5px solid var(--emerald);border-top:2.5px solid var(--emerald);transform:translateY(-50%) rotate(45deg);opacity:0;translate:-6px 0;transition:opacity .25s,translate .3s cubic-bezier(.2,.8,.2,1)}
+@media(hover:hover) and (pointer:fine){
+  dialog .opt:hover{border-color:var(--emerald);box-shadow:0 12px 26px -10px rgba(15,123,90,.35);translate:0 -2px}
+  dialog .opt:hover::before{background:var(--emerald);color:#fff}
+  dialog .opt:hover::after{opacity:1;translate:0 0}
+}
+dialog .opt:active{scale:.985}
+dialog .opt.sel{background:linear-gradient(135deg,#FFF9E0,var(--pale-gold));border-color:var(--gold);box-shadow:0 10px 24px -8px rgba(184,144,47,.5)}
+dialog .opt.sel::before{background:var(--dark);color:var(--pale-gold)}
+dialog .opt.sel::after{opacity:1;translate:0 0;border-color:var(--dark)}
+
+/* typed answer + contact fields */
+dialog .free-panel{border-radius:16px;background:#fff;border:1.5px solid rgba(11,59,46,.12);padding:16px}
+dialog input:not([type=checkbox]),dialog textarea{width:100%;margin-top:7px;padding:14px 15px;border:1.5px solid rgba(11,59,46,.16);border-radius:12px;background:#fff;color:var(--ink);font:500 16px var(--sans);transition:border-color .2s,box-shadow .2s}
+dialog input:not([type=checkbox]):hover,dialog textarea:hover{border-color:rgba(15,123,90,.5)}
+dialog input:not([type=checkbox]):focus,dialog textarea:focus{outline:none;border-color:var(--emerald);box-shadow:0 0 0 4px rgba(15,123,90,.16)}
+dialog label{font-size:13.5px;letter-spacing:.01em;color:var(--dark)}
+dialog input[type=checkbox]{accent-color:var(--emerald);width:20px;height:20px}
+dialog .row{gap:6px 16px}
+
+/* buttons */
+dialog .btn{min-height:50px;border-radius:13px;font-weight:700;letter-spacing:.01em}
+dialog .btn:not(.ghost){background:linear-gradient(135deg,#D2AC48 0%,#B8902F 55%,#9C7A22 100%);color:#fff;text-shadow:0 1px 1px rgba(60,40,0,.35);box-shadow:0 10px 22px -8px rgba(156,122,34,.65),inset 0 1px 0 rgba(255,255,255,.35)}
+dialog .btn.ghost{background:transparent;color:var(--dark);border:1.5px solid rgba(11,59,46,.22)}
+@media(hover:hover) and (pointer:fine){
+  dialog .btn:not(.ghost):hover{background:linear-gradient(135deg,#E0BC5A 0%,#C79B34 55%,#A8842A 100%);transform:translateY(-2px);box-shadow:0 16px 28px -10px rgba(156,122,34,.7),inset 0 1px 0 rgba(255,255,255,.4)}
+  dialog .btn.ghost:hover{background:rgba(11,59,46,.06);border-color:var(--dark);box-shadow:none;transform:none}
+}
+dialog .nav{margin-top:22px}
+
+/* success / loading */
+dialog .success-mark{position:relative;background:linear-gradient(135deg,rgba(15,123,90,.16),rgba(184,144,47,.16))}
+dialog .success-mark::after{content:"";position:absolute;inset:-3px;border-radius:50%;border:3px solid var(--emerald);animation:ping 1.8s .5s ease-out 2 both;pointer-events:none}
+
+/* phones: bottom sheet */
+@media(max-width:640px){
+  dialog:not(.image-lightbox){width:100vw;max-width:100vw;height:94dvh;max-height:94dvh;margin:auto 0 0;border-radius:26px 26px 0 0}
+  dialog[open]:not(.image-lightbox){animation:sheetIn .5s cubic-bezier(.2,.8,.2,1)}
+  dialog .dhead{padding:14px 16px 10px}
+  dialog #body{padding:10px 18px calc(30px + env(safe-area-inset-bottom))}
+  dialog .opt{padding:13px 40px 13px 12px;font-size:16px}
+  dialog .submit-state{min-height:calc(94dvh - 170px)}
+  dialog .btn{min-height:52px}
+}
+@keyframes sheetIn{from{transform:translateY(100%)}}
+@media(prefers-reduced-motion:reduce){dialog:not(.image-lightbox)::before{animation:none}}
 </style>
 </head>
 <body>
@@ -703,9 +879,11 @@ input[type=checkbox]{width:22px;height:22px;margin:1px 0 0;padding:0;accent-colo
 <main>
 <div class="hero">
   <div class="hero-img">
-    <img class="pic" src="https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1600"
-         srcset="https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1000 1000w, https://drive.google.com/thumbnail?id=11T-HuBc3jrKsEbPAiskNED1amnWQD773&sz=w1600 1600w"
-         sizes="(max-width:640px) 100vw, 56vw" width="1600" height="1067" alt="A welcoming invitation to explore a real estate career with Charlene Dellosa" referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
+    <div class="pic-mask">
+      <img class="pic" src="https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1600"
+           srcset="https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w640 640w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1000 1000w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1600 1600w, https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w2000 2000w"
+           sizes="(max-width:640px) 100vw, 56vw" width="1600" height="1067" alt="A welcoming invitation to explore a real estate career with Charlene Dellosa" referrerpolicy="no-referrer" fetchpriority="high" decoding="async">
+    </div>
     <div class="badge"><i></i><span data-i="badge">Welcoming new agents</span></div>
     <div class="tag">
       <small data-i="tag_s">Ready for a new chapter in real estate? Let’s explore it together.</small>
@@ -1616,6 +1794,110 @@ applyLang();
   document.querySelectorAll('main section h2, .lead, .grid4 div, .fit li, .steps li, .stat, .faq details, .apply p').forEach(function (el, k) {
     el.classList.add('rv'); el.style.transitionDelay = (k % 4) * 90 + 'ms'; io.observe(el);
   });
+})();
+
+/* ---------- Premium hero motion: pointer parallax, spotlight, gentle scroll parallax ---------- */
+(function () {
+  if (REDUCED) return;
+  const hero = document.querySelector('.hero'), pic = hero && hero.querySelector('.pic');
+  if (!hero || !pic) return;
+  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
+  const small = matchMedia('(max-width:640px)');
+  let raf = 0, nx = 0, ny = 0, mxp = null, myp = null, sy = 0;
+  function paint() {
+    raf = 0;
+    pic.style.setProperty('--px', (nx * -8).toFixed(1) + 'px');
+    pic.style.setProperty('--py', (ny * -5).toFixed(1) + 'px');
+    pic.style.setProperty('--sy', sy.toFixed(1) + 'px');
+    if (mxp !== null) { hero.style.setProperty('--mx', mxp + 'px'); hero.style.setProperty('--my', myp + 'px'); }
+  }
+  function queue() { if (!raf) raf = requestAnimationFrame(paint); }
+  if (fine) {
+    hero.addEventListener('pointermove', function (e) {
+      const r = hero.getBoundingClientRect();
+      mxp = Math.round(e.clientX - r.left); myp = Math.round(e.clientY - r.top);
+      nx = (mxp / r.width) * 2 - 1; ny = (myp / r.height) * 2 - 1; queue();
+    });
+    hero.addEventListener('pointerleave', function () { nx = ny = 0; queue(); });
+  }
+  window.addEventListener('scroll', function () {
+    const y = window.scrollY || 0;
+    if (y > hero.offsetHeight * 1.2) return;
+    sy = Math.min(y * (small.matches ? 0.04 : 0.05), small.matches ? 5 : 9); queue();
+  }, { passive: true });
+})();
+
+/* ---------- Hero photo: remove a flat black background (Drive can flatten transparent PNGs to black) ---------- */
+(function () {
+  const pic = document.querySelector('.hero .pic');
+  if (!pic) return;
+  const ID = '1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6';
+  const sources = [
+    'https://lh3.googleusercontent.com/d/' + ID + '=w1600',
+    'https://drive.google.com/thumbnail?id=' + ID + '&sz=w1600'
+  ];
+  let done = false;
+  pic.classList.add('is-cleaning');
+  function finish() { if (done) return; done = true; pic.classList.remove('is-cleaning'); }
+  setTimeout(finish, 3500);
+
+  const orig = { src: pic.getAttribute('src'), srcset: pic.getAttribute('srcset'), sizes: pic.getAttribute('sizes') };
+  function restore() {
+    if (orig.srcset) pic.setAttribute('srcset', orig.srcset);
+    if (orig.sizes) pic.setAttribute('sizes', orig.sizes);
+    pic.src = orig.src; finish();
+  }
+  function useUrl(u) {
+    pic.removeAttribute('srcset'); pic.removeAttribute('sizes');
+    pic.onload = finish; pic.onerror = restore;
+    pic.src = u;
+  }
+
+  function clean(im) {
+    const w = im.naturalWidth, h = im.naturalHeight;
+    const c = document.createElement('canvas'); c.width = w; c.height = h;
+    const x = c.getContext('2d', { willReadFrequently: true });
+    x.drawImage(im, 0, 0);
+    const d = x.getImageData(0, 0, w, h), px = d.data, N = w * h;
+    const LIM = 24;
+    function isDark(k) { const i = k * 4; return px[i + 3] > 200 && px[i] < LIM && px[i + 1] < LIM && px[i + 2] < LIM; }
+    const corners = [0, w - 1, N - w, N - 1];
+    let dk = 0; corners.forEach(function (k) { if (isDark(k)) dk++; });
+    if (dk < 3) { useUrl(im.src); return; }           // already transparent / coloured: just use the sharp copy
+    const gone = new Uint8Array(N), stack = new Int32Array(N); let sp = 0;
+    function seed(k) { if (!gone[k] && isDark(k)) { gone[k] = 1; stack[sp++] = k; } }
+    for (let a = 0; a < w; a++) { seed(a); seed(N - w + a); }
+    for (let b = 0; b < h; b++) { seed(b * w); seed(b * w + w - 1); }
+    while (sp) {
+      const k = stack[--sp], cx = k % w;
+      if (cx > 0) seed(k - 1);
+      if (cx < w - 1) seed(k + 1);
+      if (k >= w) seed(k - w);
+      if (k < N - w) seed(k + w);
+    }
+    for (let k = 0; k < N; k++) {
+      const i = k * 4;
+      if (gone[k]) { px[i + 3] = 0; continue; }
+      const cx = k % w;
+      const edge = (cx > 0 && gone[k - 1]) || (cx < w - 1 && gone[k + 1]) || (k >= w && gone[k - w]) || (k < N - w && gone[k + w]);
+      if (edge) {
+        const m = Math.max(px[i], px[i + 1], px[i + 2]);
+        if (m < 70) px[i + 3] = Math.max(0, Math.min(255, ((m - 12) / 58) * 255));
+      }
+    }
+    x.putImageData(d, 0, 0);
+    c.toBlob(function (b) { if (b) useUrl(URL.createObjectURL(b)); else finish(); }, 'image/png');
+  }
+
+  function tryLoad(k) {
+    if (k >= sources.length) { finish(); return; }
+    const im = new Image();
+    im.crossOrigin = 'anonymous'; im.referrerPolicy = 'no-referrer';
+    im.onload = function () { try { clean(im); } catch (e) { tryLoad(k + 1); } };
+    im.onerror = function () { tryLoad(k + 1); };
+    im.src = sources[k];
+  }
+  tryLoad(0);
 })();
 </script>
 </body>
