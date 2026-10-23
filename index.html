@@ -28,7 +28,7 @@
 <meta name="twitter:description" content="Explore real estate training, mentorship, and team opportunities with Charlene Dellosa in the Philippines.">
 <meta name="twitter:url" content="https://recruitment-charlenedellosa.vercel.app/">
 <meta name="twitter:image" content="https://recruitment-charlenedellosa.vercel.app/social-share.png">
-<link rel="preload" as="image" href="/images/hero.png" imagesrcset="/images/hero.png 640w, /images/hero.png 960w, /images/hero.png 1280w, /images/hero.png 1600w" imagesizes="(max-width:640px) 100vw, 50vw" fetchpriority="high">
+<link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w960" imagesrcset="https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w640 640w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w960 960w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w1280 1280w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w1600 1600w" imagesizes="(max-width:640px) 100vw, 50vw" crossorigin="anonymous" fetchpriority="high">
 <title>Charlene Dellosa Recruitment | Real Estate Team</title>
 <link rel="canonical" href="https://recruitment-charlenedellosa.vercel.app/">
 <link rel="icon" href="/favicon/favicon.ico" sizes="any">
@@ -433,7 +433,6 @@ dialog.closing::backdrop{animation:fadeOut .22s both}
 /* Responsive polish: keep the brand composition intact at every viewport */
 html,body{overflow-x:hidden}
 img{max-width:100%}
-.image-load-failed{background:var(--dark);min-height:120px}
 .hero{min-height:clamp(560px,62vw,700px);display:flex;align-items:center}
 .hero .wrap{width:100%}
 .hero-img{min-height:100%}
@@ -660,7 +659,6 @@ input[type=checkbox]{width:22px;height:22px;margin:1px 0 0;padding:0;accent-colo
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{-webkit-tap-highlight-color:transparent;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%}
-.image-load-failed{background:var(--dark);min-height:120px}
 
 /* ---- Hero image frame: keeps the diagonal edge fixed while the photo moves inside it ---- */
 .hero-img .pic-mask{position:absolute;inset:0;overflow:hidden;background:radial-gradient(120% 90% at 62% 38%,#127A5B 0%,#0D4E3C 48%,#0B3B2E 100%);clip-path:polygon(16% 0,100% 0,100% 100%,0 100%)}
@@ -833,188 +831,9 @@ dialog .success-mark::after{content:"";position:absolute;inset:-3px;border-radiu
 
 html.lite #fx{display:none}
 html.lite .hero-img .pic,html.lite .hero-img::before,html.lite .badge,html.lite .badge i::after,html.lite .hero::before,html.lite .hero::after,html.lite .btn[data-open]::after{animation:none!important}
-
-/* =====================================================================
-   SECTION REDESIGN: premium rhythm, consistent cards, engaging scroll
-   ===================================================================== */
-html,body{overflow-x:clip}
-:root{--r:20px;--sh1:0 1px 2px rgba(11,59,46,.05),0 12px 30px -14px rgba(11,59,46,.2);--sh2:0 2px 4px rgba(11,59,46,.06),0 28px 52px -20px rgba(11,59,46,.34)}
-h2{font-size:clamp(28px,4.2vw,46px);letter-spacing:-.018em}
-.lead{font-size:clamp(17px,1.9vw,20px);color:#454b4f;line-height:1.6}
-.why-team .lead{color:var(--pale-gold)}
-section{padding:clamp(60px,8vw,108px) 0}
-.pain{padding-top:clamp(48px,6vw,80px)}
-
-/* sticky glass header + reading progress */
-.bar{position:sticky;top:0;z-index:60;background:rgba(11,59,46,.9);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid rgba(233,217,166,.14)}
-.scroll-progress{position:fixed;left:0;right:0;top:0;height:3px;z-index:1500;pointer-events:none}
-.scroll-progress i{display:block;height:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),var(--pale-gold),var(--emerald))}
-
-/* stats strip */
-@media(min-width:641px){
-  .strip{background:linear-gradient(180deg,#EFE1B1,#E9D9A6)}
-  .strip .wrap{text-align:center;padding-top:34px;padding-bottom:34px}
-  .stat+.stat{border-left:1px solid rgba(11,59,46,.18)}
-  .stat b{font-size:clamp(28px,3vw,38px)}
-}
-
-/* centred section intros */
-:is(.benefits,.why-team,.agent-gallery,.testimonials,.incentives,.joining,.faq) :is(h2,.lead,.pain-kicker,.incentive-note){text-align:center}
-:is(.benefits,.why-team,.agent-gallery,.testimonials,.incentives,.joining,.faq) :is(.lead,.incentive-note){margin-left:auto;margin-right:auto}
-:is(.benefits,.why-team,.agent-gallery,.testimonials,.incentives,.joining,.faq) h2::after{margin-left:auto;margin-right:auto}
-.pain-kicker{display:inline-block;padding:6px 14px;border-radius:99px;background:rgba(184,144,47,.13);font-size:12.5px}
-.testimonials .wrap>.pain-kicker,.agent-gallery .wrap>.pain-kicker,.incentives .wrap>.pain-kicker{display:table;margin-left:auto;margin-right:auto}
-
-/* section rhythm: cream / white / deep green / gold */
-.benefits{background:#fff}
-.why-team{background:radial-gradient(900px 420px at 88% 0%,rgba(15,123,90,.38),transparent 62%),var(--dark)}
-.agent-gallery{background:var(--cream)}
-.testimonials{background:#fff}
-.incentives{background:var(--cream)}
-.joining{background:#fff}
-.fit{background:linear-gradient(180deg,#ECDDAC,#E9D9A6)}
-.faq{background:var(--cream)}
-
-/* one card language everywhere */
-.pain-card,.grid4>div,.why-card,.testimonial,.agent-card,.steps li,.incentive-card{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid rgba(11,59,46,.08);box-shadow:var(--sh1)}
-.pain-card::after,.grid4>div::after,.why-card::after,.testimonial::after,.agent-card::after,.steps li::after,.incentive-card::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--pale-gold));transform:scaleX(0);transform-origin:left;transition:transform .6s cubic-bezier(.2,.7,.2,1);pointer-events:none;z-index:2}
-@media(hover:hover) and (pointer:fine){
-  .pain-card:hover::after,.grid4>div:hover::after,.why-card:hover::after,.testimonial:hover::after,.agent-card:hover::after,.steps li:hover::after,.incentive-card:hover::after{transform:scaleX(1)}
-  .pain-card:hover,.grid4>div:hover,.why-card:hover,.testimonial:hover,.agent-card:hover,.steps li:hover,.incentive-card:hover{box-shadow:var(--sh2)}
-}
-@media(hover:none){
-  .pain-card::after,.grid4>div::after,.why-card::after,.testimonial::after,.agent-card::after,.steps li::after,.incentive-card::after{transform:scaleX(.16)}
-}
-.agent-card,.steps li{transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s ease,opacity .85s cubic-bezier(.2,.7,.2,1)}
-@media(hover:hover) and (pointer:fine){.agent-card:hover,.steps li:hover{transform:translateY(-6px)}}
-
-/* benefits: numbered cards */
-.grid4{counter-reset:g}
-.grid4>div{padding:26px 22px 26px;background:linear-gradient(180deg,#fff,#FCFAF1)}
-.grid4>div::before{counter-increment:g;content:"0" counter(g);display:block;font:400 36px/1 var(--serif);color:var(--gold);margin-bottom:16px}
-.grid4 h3{font-size:22px}
-
-/* why team: glass cards */
-.why-grid{counter-reset:w}
-.why-card{padding:30px 26px;background:linear-gradient(160deg,rgba(250,245,230,.12),rgba(250,245,230,.04));border-color:rgba(233,217,166,.22);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:none}
-.why-card::before{counter-increment:w;content:"0" counter(w);display:block;font:400 36px/1 var(--serif);color:var(--gold);margin-bottom:14px}
-.why-card h3{font-size:24px}
-
-/* gallery: captions on the photo (tablet and up) */
-@media(min-width:641px){
-  .agent-card{border:0;background:var(--dark)}
-  .agent-card figure{aspect-ratio:16/10}
-  .agent-card .agent-copy{position:absolute;left:0;right:0;bottom:0;padding:54px 22px 20px;background:linear-gradient(0deg,rgba(6,32,25,.93) 0%,rgba(6,32,25,.55) 58%,transparent 100%);pointer-events:none}
-  .agent-card h3{color:var(--cream);font-size:22px}
-  .agent-card p{color:var(--pale-gold);font-size:14px}
-}
-
-/* testimonials: editorial quote cards */
-.testimonial{padding:34px 26px 28px;background:linear-gradient(180deg,#fff,var(--cream));border-left:1px solid rgba(11,59,46,.08)}
-.testimonial::before{content:"\201C";display:block;font:400 80px/.7 var(--serif);color:var(--gold);margin-bottom:12px}
-.testimonial p{margin-bottom:0}
-
-/* incentives */
-.incentive-card{background:#fff;padding:0 24px 26px}
-.incentive-card img{border-radius:0}
-
-/* big supporting photos: cinematic crop + curtain reveal */
-.section-visual{border-radius:24px;box-shadow:var(--sh2)}
-.benefits .section-visual,.why-team .section-visual,.testimonials .section-visual{max-width:none;margin:40px 0 0}
-.testimonials .section-visual{margin:0 0 36px}
-@media(min-width:901px){.benefits .section-visual img,.why-team .section-visual img,.testimonials .section-visual img{aspect-ratio:2.1/1;object-position:50% 30%}}
-.benefits .section-visual{margin:0 0 40px}
-.section-visual.rv{opacity:1;transform:none;clip-path:inset(0 0 100% 0 round 24px);transition:clip-path 1.15s cubic-bezier(.2,.7,.2,1)}
-.section-visual.rv.in{clip-path:inset(0 0 0 0 round 24px)}
-.section-visual.rv img{transform:scale(1.16);transition:transform 1.5s cubic-bezier(.2,.7,.2,1),filter .35s ease}
-.section-visual.rv.in img{transform:scale(1)}
-@media(hover:hover) and (pointer:fine){.section-visual.rv.in:hover img{transform:scale(1.03);transition-duration:.7s}}
-
-/* mid-page call-to-action band */
-.cta-band{content-visibility:visible;padding:clamp(40px,5vw,64px) 0;position:relative;overflow:hidden;color:var(--cream);background:linear-gradient(120deg,#0B3B2E 0%,#0E6048 55%,#0B3B2E 100%)}
-.cta-band::before{content:"";position:absolute;right:-120px;top:-200px;width:420px;height:420px;border-radius:50%;border:1.5px solid rgba(233,217,166,.2);animation:ringBreath 11s ease-in-out infinite}
-.cta-band .wrap{position:relative;display:flex;align-items:center;justify-content:space-between;gap:28px}
-.cta-band h2{color:var(--cream);font-size:clamp(24px,3.2vw,36px);margin:0 0 8px;text-align:left}
-.cta-band h2::after{display:none}
-.cta-band p{color:var(--pale-gold);margin:0}
-.cta-band .btn{flex:none;min-height:54px;padding:14px 30px;font-size:17px;border-radius:13px}
-@media(max-width:760px){.cta-band .wrap{flex-direction:column;align-items:stretch;text-align:center}.cta-band h2{text-align:center}}
-
-/* steps */
-.step-copy{padding:20px}
-.step-number{font-size:34px}
-
-/* fit: photo + checklist side by side */
-.fit .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:18px 56px;align-items:center}
-.fit .section-visual{grid-row:1 / span 2;margin:0;max-width:none}
-.fit .section-visual img{aspect-ratio:4/3.4}
-.fit h2{align-self:end;margin-bottom:6px}
-.fit ul{display:grid;gap:12px;max-width:none;align-self:start}
-.fit li{padding:16px 18px 16px 60px;background:#fff;border:1px solid rgba(11,59,46,.08);border-radius:14px;box-shadow:var(--sh1);font-weight:500;line-height:1.5}
-.fit li::before{left:21px;top:50%;margin-top:-7px;width:14px;height:8px;z-index:1}
-.fit li::after{content:"";position:absolute;left:12px;top:50%;width:32px;height:32px;margin-top:-16px;border-radius:50%;background:rgba(15,123,90,.12)}
-@media(max-width:900px){.fit .wrap{grid-template-columns:1fr;gap:20px}.fit .section-visual{grid-row:auto}.fit h2{align-self:start}}
-
-/* FAQ as soft accordion cards */
-.faq .wrap{max-width:860px}
-.faq details{max-width:none;margin-bottom:12px;padding:0 24px;background:#fff;border:1px solid rgba(11,59,46,.09);border-bottom:1px solid rgba(11,59,46,.09);border-radius:16px;box-shadow:var(--sh1);transition:border-color .3s,box-shadow .3s}
-.faq details[open]{border-color:rgba(184,144,47,.6);box-shadow:var(--sh2)}
-.faq summary{padding:20px 46px 20px 0;font-size:clamp(17px,2vw,20px)}
-.faq summary::after{content:"+";right:0;display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:rgba(15,123,90,.1);font:500 22px/1 var(--sans);transition:transform .35s cubic-bezier(.2,.8,.2,1),background .25s,color .25s}
-.faq details[open] summary::after{background:var(--emerald);color:#fff}
-.faq details p{padding:0 0 22px;color:#454b4f}
-
-/* final call-to-action */
-.apply{content-visibility:visible;position:relative;overflow:hidden;padding:clamp(72px,9vw,128px) 0;background:radial-gradient(720px 360px at 50% 0%,rgba(233,217,166,.24),transparent 70%),linear-gradient(160deg,#0F7B5A 0%,#0B5A44 100%)}
-.apply::before,.apply::after{content:"";position:absolute;border-radius:50%;pointer-events:none;border:1.5px solid rgba(233,217,166,.22);animation:ringBreath 12s ease-in-out infinite}
-.apply::before{width:560px;height:560px;right:-180px;top:-240px}
-.apply::after{width:380px;height:380px;left:-120px;bottom:-190px;animation-delay:-6s}
-.apply .wrap{position:relative;z-index:1}
-.apply h2{font-size:clamp(28px,4.6vw,48px);max-width:20ch;margin:0 auto 16px}
-.apply h2::after{margin:16px auto 0}
-.apply p{font-size:clamp(17px,2vw,20px)}
-.apply .btn{min-height:58px;padding:16px 38px;font-size:18px;border-radius:14px;box-shadow:0 18px 36px -12px rgba(0,0,0,.5)}
-.apply .apply-note{margin:18px auto 0;font-size:14px;opacity:.85}
-
-/* footer */
-footer{position:relative;padding:60px 0 44px;background:radial-gradient(620px 240px at 50% 0%,rgba(15,123,90,.38),transparent 70%),var(--dark)}
-footer::before{content:"";position:absolute;top:0;left:50%;width:min(420px,70%);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-footer strong{font-size:26px}
-.soc{margin:20px 0}
-.soc a{padding:10px 20px;background:rgba(233,217,166,.06)}
-@media(hover:hover) and (pointer:fine){.soc a:hover{transform:translateY(-2px)}}
-
-/* sticky phone button: appears after the hero button scrolls away, hides at the final CTA */
-@media(max-width:640px){
-  body .mobile-cta{animation:none;transform:translateY(160%);opacity:0;pointer-events:none;transition:transform .55s cubic-bezier(.2,.8,.2,1),opacity .4s ease}
-  body .mobile-cta.show{transform:none;opacity:1;pointer-events:auto}
-  .benefits .section-visual,.why-team .section-visual{margin-top:30px}
-  .grid4>div{padding:22px 20px}
-  .faq details{padding:0 18px}
-  .section-visual{border-radius:18px}
-  .section-visual.rv{clip-path:inset(0 0 100% 0 round 18px)}
-  .section-visual.rv.in{clip-path:inset(0 0 0 0 round 18px)}
-}
-@media(prefers-reduced-motion:reduce){.section-visual.rv img{transform:none}.scroll-progress i{transition:none}}
-
-/* spacing fixes after reordering */
-.benefits .section-visual,.why-team .section-visual{margin:0 0 40px}
-.benefits .lead,.why-team .lead{margin-bottom:34px}
-.testimonials .section-visual{margin:30px 0 36px}
-@media(max-width:640px){.benefits .section-visual,.why-team .section-visual{margin:0 0 28px}.benefits .lead,.why-team .lead{margin-bottom:26px}}
-
-/* ===== Always-visible CTA: floating pill on desktop, full-width bar on phones ===== */
-body .mobile-cta{display:inline-flex;align-items:center;justify-content:center;position:fixed;z-index:100;left:auto;right:clamp(16px,2.4vw,32px);bottom:calc(clamp(16px,2.4vw,28px) + env(safe-area-inset-bottom));width:auto;min-height:54px;padding:14px 28px;border-radius:999px;font-size:16px;font-weight:700;letter-spacing:.01em;box-shadow:0 14px 32px -10px rgba(11,59,46,.55),0 0 0 1px rgba(255,255,255,.25) inset;transform:translateY(160%);opacity:0;pointer-events:none;animation:none;transition:transform .6s cubic-bezier(.2,.8,.2,1),opacity .4s ease,background .2s,box-shadow .2s}
-body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;pointer-events:auto;animation:ctaGlow 3.2s 1.5s ease-in-out infinite}
-@keyframes ctaGlow{0%,100%{box-shadow:0 14px 32px -10px rgba(11,59,46,.55),0 0 0 0 rgba(184,144,47,.5)}50%{box-shadow:0 14px 32px -10px rgba(11,59,46,.55),0 0 0 12px rgba(184,144,47,0)}}
-@media(hover:hover) and (pointer:fine){body .mobile-cta:hover{transform:translateY(-3px)}}
-@media(max-width:640px){body .mobile-cta{left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));border-radius:14px;min-height:52px;font-size:16px}}
-/* header link becomes a clear button on desktop */
-@media(min-width:641px){.bar .link{border:1.5px solid rgba(233,217,166,.55);border-radius:999px;padding:8px 20px;font-weight:600;transition:background .2s,color .2s}.bar .link:hover{background:var(--pale-gold);color:var(--dark)}}
 </style>
 </head>
 <body>
-<div class="scroll-progress" aria-hidden="true"><i></i></div>
 
 <div class="page-loader" id="page-loader" role="status" aria-live="polite" aria-hidden="true">
   <div class="page-loader-inner">
@@ -1068,9 +887,9 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
 <div class="hero">
   <div class="hero-img">
     <div class="pic-mask">
-      <img class="pic" src="/images/hero.png"
-           srcset="/images/hero.png 640w, /images/hero.png 960w, /images/hero.png 1280w, /images/hero.png 1600w"
-           sizes="(max-width:640px) 100vw, 50vw" width="1600" height="1067" alt="A welcoming invitation to explore a real estate career with Charlene Dellosa" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('crossorigin');this.src='/images/drive-1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6.jpg'">
+      <img class="pic" src="https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w960"
+           srcset="https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w640 640w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w960 960w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w1280 1280w, https://lh3.googleusercontent.com/d/1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6=w1600 1600w"
+           sizes="(max-width:640px) 100vw, 50vw" width="1600" height="1067" crossorigin="anonymous" alt="A welcoming invitation to explore a real estate career with Charlene Dellosa" referrerpolicy="no-referrer" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.removeAttribute('srcset');this.removeAttribute('crossorigin');this.src='https://drive.google.com/thumbnail?id=1fbMAog5MFGzpvpBL1CNZBh10zfMgv_D6&sz=w1200'">
     </div>
     <div class="badge"><i></i><span data-i="badge">Welcoming new agents</span></div>
     <div class="tag">
@@ -1109,29 +928,29 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
     <div class="pain-grid">
       <article class="pain-card">
         <figure>
-          <img src="/images/drive-13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA.jpg" srcset="/images/drive-13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA.jpg 480w, /images/drive-13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA.jpg 800w, /images/drive-13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
-               alt="A woman looking thoughtful at her laptop, representing uncertainty about where to start." width="1200" height="900" loading="lazy" decoding="async">
+          <img src="https://drive.google.com/thumbnail?id=13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=13EBSvzPOuCj4DeREA6J_9qzIArJ_R2MA&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
+               alt="A woman looking thoughtful at her laptop, representing uncertainty about where to start." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </figure>
         <div class="pain-copy"><h3 data-i="p1_h">Not sure where to begin?</h3><p data-i="p1_p">Licensing, listings, pricing, and closing are easier to tackle with a clear path and practical guidance.</p><span class="answer" data-i="p1_a">→ Get clear next steps</span></div>
       </article>
       <article class="pain-card">
         <figure>
-          <img src="/images/drive-1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf.jpg" srcset="/images/drive-1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf.jpg 480w, /images/drive-1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf.jpg 800w, /images/drive-1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
-               alt="A real estate professional at a laptop holding a phone, representing the need for a reliable flow of leads." width="1200" height="900" loading="lazy" decoding="async">
+          <img src="https://drive.google.com/thumbnail?id=1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1G92KxRV4rFdZWTWtAgvM9-1wjNkfUBWf&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
+               alt="A real estate professional at a laptop holding a phone, representing the need for a reliable flow of leads." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </figure>
         <div class="pain-copy"><h3 data-i="p2_h">Looking for more opportunities?</h3><p data-i="p2_p">Build momentum with access to team-sourced leads and property opportunities; availability can vary.</p><span class="answer" data-i="p2_a">→ Explore team opportunities</span></div>
       </article>
       <article class="pain-card">
         <figure>
-          <img src="/images/drive-1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB.jpg" srcset="/images/drive-1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB.jpg 480w, /images/drive-1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB.jpg 800w, /images/drive-1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
-               alt="A woman pausing over her work, representing the need for support and mentorship." width="1200" height="900" loading="lazy" decoding="async">
+          <img src="https://drive.google.com/thumbnail?id=1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1oWhSuNWtjUtZnOUOjCjU9JPLu4BB0tfB&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
+               alt="A woman pausing over her work, representing the need for support and mentorship." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </figure>
         <div class="pain-copy"><h3 data-i="p3_h">Want guidance you can actually use?</h3><p data-i="p3_p">Get a person to turn to with questions before important client conversations and while you learn the work.</p><span class="answer" data-i="p3_a">→ Learn with one-to-one mentorship</span></div>
       </article>
       <article class="pain-card">
         <figure>
-          <img src="/images/drive-1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz.jpg" srcset="/images/drive-1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz.jpg 480w, /images/drive-1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz.jpg 800w, /images/drive-1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
-               alt="A woman working from home with her family nearby, representing career flexibility." width="1200" height="900" loading="lazy" decoding="async">
+          <img src="https://drive.google.com/thumbnail?id=1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1RdJcUZPzX1Dvc1zRqvbImshUqZ-Y_ekz&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px"
+               alt="A woman working from home with her family nearby, representing career flexibility." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer">
         </figure>
         <div class="pain-copy"><h3 data-i="p4_h">Need a path that fits real life?</h3><p data-i="p4_p">Explore a flexible schedule that can work alongside your current responsibilities and goals.</p><span class="answer" data-i="p4_a">→ Build at a pace that works for you</span></div>
       </article>
@@ -1141,10 +960,9 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
 
 <section class="benefits">
   <div class="wrap">
-    
+    <figure class="section-visual"><img class="js-lightbox-image" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663905993371/UQEpVxWDQAqpaVsa.jpg" alt="A real estate team learning together around a property presentation" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <h2 data-i="ben_h">The support to build with confidence</h2>
     <p class="lead" data-i="ben_lead">Build your real estate business with a team in your corner.</p>
-    <figure class="section-visual"><img class="js-lightbox-image" src="/images/support-team.jpg" alt="A real estate team learning together around a property presentation" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <div class="grid4">
       <div><h3 data-i="b1_h">Practical, hands-on training</h3><p data-i="b1_p">Build skills in listings, pricing, negotiation, and closing—with guidance at each step.</p></div>
       <div><h3 data-i="b2_h">Team-sourced opportunities</h3><p data-i="b2_p">Explore buyer leads and property opportunities shared by the team. Availability may vary.</p></div>
@@ -1156,10 +974,9 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
 
 <section class="why-team">
   <div class="wrap">
-    
+    <figure class="section-visual"><img class="js-lightbox-image" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663905993371/iSRfCHqnufhsrGZq.jpg" alt="A mentor having a supportive one-on-one conversation with an aspiring agent" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <h2 data-i="why_h">Why Charlene’s team?</h2>
     <p class="lead" data-i="why_lead">A practical, people-first environment where you can learn, ask questions, and keep moving forward.</p>
-    <figure class="section-visual"><img class="js-lightbox-image" src="/images/mentorship.jpg" alt="A mentor having a supportive one-on-one conversation with an aspiring agent" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <div class="why-grid">
       <article class="why-card"><h3 data-i="why1_h">Real guidance, when it matters</h3><p data-i="why1_p">Talk through questions with a real person—not just a course to complete—before important client conversations.</p></article>
       <article class="why-card"><h3 data-i="why2_h">Clear steps from the start</h3><p data-i="why2_p">Understand the path from licensing and training to working with clients and completing transactions.</p></article>
@@ -1175,10 +992,10 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
     <p class="lead" data-i="agents_lead">Get a feel for how the team learns, collaborates, and supports clients in real estate.</p>
     <div class="agent-grid">
       <!-- Group activity photos: replace any src with a newer Google Drive thumbnail URL when needed. -->
-      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-1" src="/images/drive-13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ.jpg" srcset="/images/drive-13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ.jpg 480w, /images/drive-13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ.jpg 800w, /images/drive-13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members training and learning" width="1200" height="750" loading="lazy" decoding="async"></figure><div class="agent-copy"><h3 data-i="activity1_h">Training and learning</h3><p data-i="activity1_p">Learn together, share ideas, and build confidence before stepping into the field.</p></div></article>
-      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-2" src="/images/drive-1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR.jpg" srcset="/images/drive-1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR.jpg 480w, /images/drive-1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR.jpg 800w, /images/drive-1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members planning the next move" width="1200" height="750" loading="lazy" decoding="async"></figure><div class="agent-copy"><h3 data-i="activity2_h">Planning the next move</h3><p data-i="activity2_p">Work through listings, client needs, and the details that keep a deal moving.</p></div></article>
-      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-3" src="/images/drive-1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7.jpg" srcset="/images/drive-1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7.jpg 480w, /images/drive-1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7.jpg 800w, /images/drive-1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members collaboration in action" width="1200" height="750" loading="lazy" decoding="async"></figure><div class="agent-copy"><h3 data-i="activity3_h">Collaboration in action</h3><p data-i="activity3_p">Bring different strengths together to support clients and create better outcomes.</p></div></article>
-      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-4" src="/images/drive-1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT.jpg" srcset="/images/drive-1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT.jpg 480w, /images/drive-1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT.jpg 800w, /images/drive-1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members celebrating progress" width="1200" height="750" loading="lazy" decoding="async"></figure><div class="agent-copy"><h3 data-i="activity4_h">Celebrating progress</h3><p data-i="activity4_p">Grow as a team, recognize milestones, and keep building momentum together.</p></div></article>
+      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-1" src="https://drive.google.com/thumbnail?id=13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=13meCUlDBZrDcPa5RSFgGAW1CYmF-kxyJ&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members training and learning" width="1200" height="750" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure><div class="agent-copy"><h3 data-i="activity1_h">Training and learning</h3><p data-i="activity1_p">Learn together, share ideas, and build confidence before stepping into the field.</p></div></article>
+      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-2" src="https://drive.google.com/thumbnail?id=1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1e8D3cZtbDyjnsOt5aEBKLq6gp8XAZ2OR&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members planning the next move" width="1200" height="750" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure><div class="agent-copy"><h3 data-i="activity2_h">Planning the next move</h3><p data-i="activity2_p">Work through listings, client needs, and the details that keep a deal moving.</p></div></article>
+      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-3" src="https://drive.google.com/thumbnail?id=1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1JEPJ0ixefMd1pnsRuDboGWRDPwkqKxM7&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members collaboration in action" width="1200" height="750" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure><div class="agent-copy"><h3 data-i="activity3_h">Collaboration in action</h3><p data-i="activity3_p">Bring different strengths together to support clients and create better outcomes.</p></div></article>
+      <article class="agent-card"><figure><img class="js-lightbox-image" data-image-slot="activity-4" src="https://drive.google.com/thumbnail?id=1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1liPapHqBzpX6UtAzZmgNPqH3R_XITHhT&amp;sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 510px" alt="Group of Charlene Dellosa team members celebrating progress" width="1200" height="750" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure><div class="agent-copy"><h3 data-i="activity4_h">Celebrating progress</h3><p data-i="activity4_p">Grow as a team, recognize milestones, and keep building momentum together.</p></div></article>
     </div>
   </div>
 </section>
@@ -1186,9 +1003,8 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
 <section class="testimonials">
   <div class="wrap">
     <p class="pain-kicker" data-i="test_kicker">Support for every stage of your growth</p>
-    
+    <figure class="section-visual"><img class="js-lightbox-image" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663905993371/ISNtranzaDTSfEwq.jpg" alt="A real estate team collaborating around property plans and a laptop" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <h2 data-i="test_h">What support can look like</h2>
-    <figure class="section-visual"><img class="js-lightbox-image" src="/images/testimonials.jpg" alt="A real estate team collaborating around property plans and a laptop" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <div class="testimonials-grid">
       <article class="testimonial"><p data-i="quote1">Clear next steps—from licensing and training to building your client pipeline.</p></article>
       <article class="testimonial"><p data-i="quote2">Practical guidance before, during, and after important client conversations.</p></article>
@@ -1203,19 +1019,12 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
     <h2 data-i="incentives_h">More than a career: a community that recognizes progress</h2>
     <p class="lead" data-i="incentives_lead">Grow your business with a team that recognizes effort and milestones—and makes space for shared experiences along the way.</p>
     <div class="incentive-grid">
-      <article class="incentive-card"><img src="/images/drive-1BxxzWUM3kLBy117C81sSQJxAahsSHis-.jpg" srcset="/images/drive-1BxxzWUM3kLBy117C81sSQJxAahsSHis-.jpg 480w, /images/drive-1BxxzWUM3kLBy117C81sSQJxAahsSHis-.jpg 800w, /images/drive-1BxxzWUM3kLBy117C81sSQJxAahsSHis-.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Performance incentives" loading="lazy" decoding="async"><h3 data-i="inc1_h">Performance incentives</h3><p data-i="inc1_p">Explore incentive opportunities tied to current team programs, eligibility, and performance.</p></article>
-      <article class="incentive-card"><img src="/images/drive-1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS.jpg" srcset="/images/drive-1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS.jpg 480w, /images/drive-1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS.jpg 800w, /images/drive-1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Perks and recognition" loading="lazy" decoding="async"><h3 data-i="inc2_h">Perks and recognition</h3><p data-i="inc2_p">Your effort can be recognized through team milestones, shared moments, and practical support as you grow.</p></article>
-      <article class="incentive-card"><img src="/images/drive-1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ.jpg" srcset="/images/drive-1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ.jpg 480w, /images/drive-1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ.jpg 800w, /images/drive-1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Travel and experiences" loading="lazy" decoding="async"><h3 data-i="inc3_h">Travel and experiences</h3><p data-i="inc3_p">Eligible team programs may include shared experiences or travel opportunities; details and availability vary.</p></article>
-      <article class="incentive-card"><img src="/images/drive-1Mev314idmfTuliflutsm7zkiXpedA2C0.jpg" srcset="/images/drive-1Mev314idmfTuliflutsm7zkiXpedA2C0.jpg 480w, /images/drive-1Mev314idmfTuliflutsm7zkiXpedA2C0.jpg 800w, /images/drive-1Mev314idmfTuliflutsm7zkiXpedA2C0.jpg 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="A bigger life by design" loading="lazy" decoding="async"><h3 data-i="inc4_h">A bigger life by design</h3><p data-i="inc4_p">Create more possibilities for yourself while building a career around your goals, strengths, and real life.</p></article>
+      <article class="incentive-card"><img src="https://drive.google.com/thumbnail?id=1BxxzWUM3kLBy117C81sSQJxAahsSHis-&sz=w800" srcset="https://drive.google.com/thumbnail?id=1BxxzWUM3kLBy117C81sSQJxAahsSHis-&sz=w480 480w, https://drive.google.com/thumbnail?id=1BxxzWUM3kLBy117C81sSQJxAahsSHis-&sz=w800 800w, https://drive.google.com/thumbnail?id=1BxxzWUM3kLBy117C81sSQJxAahsSHis-&sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Performance incentives" loading="lazy" decoding="async"><h3 data-i="inc1_h">Performance incentives</h3><p data-i="inc1_p">Explore incentive opportunities tied to current team programs, eligibility, and performance.</p></article>
+      <article class="incentive-card"><img src="https://drive.google.com/thumbnail?id=1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS&sz=w800" srcset="https://drive.google.com/thumbnail?id=1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS&sz=w480 480w, https://drive.google.com/thumbnail?id=1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS&sz=w800 800w, https://drive.google.com/thumbnail?id=1lBxIlBonNoiCbMIe-wIUBVGTbtsj9qXS&sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Perks and recognition" loading="lazy" decoding="async"><h3 data-i="inc2_h">Perks and recognition</h3><p data-i="inc2_p">Your effort can be recognized through team milestones, shared moments, and practical support as you grow.</p></article>
+      <article class="incentive-card"><img src="https://drive.google.com/thumbnail?id=1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ&sz=w800" srcset="https://drive.google.com/thumbnail?id=1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ&sz=w480 480w, https://drive.google.com/thumbnail?id=1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ&sz=w800 800w, https://drive.google.com/thumbnail?id=1Ac0p8laheloSll-Q4HEtcsvs7Z6m8dPQ&sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="Travel and experiences" loading="lazy" decoding="async"><h3 data-i="inc3_h">Travel and experiences</h3><p data-i="inc3_p">Eligible team programs may include shared experiences or travel opportunities; details and availability vary.</p></article>
+      <article class="incentive-card"><img src="https://drive.google.com/thumbnail?id=1Mev314idmfTuliflutsm7zkiXpedA2C0&sz=w800" srcset="https://drive.google.com/thumbnail?id=1Mev314idmfTuliflutsm7zkiXpedA2C0&sz=w480 480w, https://drive.google.com/thumbnail?id=1Mev314idmfTuliflutsm7zkiXpedA2C0&sz=w800 800w, https://drive.google.com/thumbnail?id=1Mev314idmfTuliflutsm7zkiXpedA2C0&sz=w1200 1200w" sizes="(max-width:640px) calc(100vw - 48px), (max-width:900px) calc(50vw - 42px), 255px" alt="A bigger life by design" loading="lazy" decoding="async"><h3 data-i="inc4_h">A bigger life by design</h3><p data-i="inc4_p">Create more possibilities for yourself while building a career around your goals, strengths, and real life.</p></article>
     </div>
     <p class="incentive-note" data-i="incentives_note">Incentives, perks, and travel opportunities depend on current programs, eligibility, and performance. The team will explain the details before you decide.</p>
-  </div>
-</section>
-
-<section class="cta-band" aria-label="Quick start">
-  <div class="wrap">
-    <div class="cta-band-copy"><h2 data-i="mid_h">Ready to see if this is your next move?</h2><p data-i="hero_note">Six quick questions. About 2 minutes. No pressure to decide.</p></div>
-    <button class="btn" type="button" data-open data-i="cta">See if we’re a fit</button>
   </div>
 </section>
 
@@ -1248,7 +1057,7 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
 
 <section class="fit">
   <div class="wrap">
-    <figure class="section-visual"><img class="js-lightbox-image" src="/images/aspiring-agent.jpg" alt="A confident aspiring real estate agent holding a notebook and phone" loading="lazy" decoding="async" width="1200" height="800"></figure>
+    <figure class="section-visual"><img class="js-lightbox-image" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663905993371/FlMkUjWpPBWnefol.jpg" alt="A confident aspiring real estate agent holding a notebook and phone" loading="lazy" decoding="async" width="1200" height="800"></figure>
     <h2 data-i="fit_h">Could this team be right for you?</h2>
     <ul>
       <li data-i="f1">People who communicate clearly and follow up on time</li>
@@ -1288,7 +1097,6 @@ body.page-ready .mobile-cta,body .mobile-cta.show{transform:none;opacity:1;point
     <h2 data-i="apply_h">Curious whether this team is right for you?</h2>
     <p data-i="apply_p">Answer six quick questions. The team will review your answers and follow up about possible next steps.</p>
     <button class="btn" data-open data-i="cta">See if we’re a fit</button>
-    <p class="apply-note" data-i="hero_note">Six quick questions. About 2 minutes. No pressure to decide.</p>
   </div>
 </section>
 </main>
@@ -1497,7 +1305,6 @@ const TL = {
   a8: 'Susuriin ng team ang mga sagot mo at kokontakin ka para mag-ayos ng maikling usapan tungkol sa oportunidad at mga posibleng susunod na hakbang.',
   q9: 'Paano ako makakapag-apply sa real estate team ni Charlene Dellosa?',
   a9: 'Sagutan ang maikling recruitment questionnaire sa page na ito. Susuriin ng team ni Charlene Dellosa ang mga sagot mo at kokontakin ka tungkol sa training, mentorship, at posibleng susunod na hakbang.',
-  mid_h: 'Handa ka na bang alamin kung ito na ang susunod mong hakbang?',
   apply_h: 'Curious if this team is the right fit for you?',
   apply_p: 'Answer six quick questions. The team will review your answers and follow up about possible next steps.',
   foot_s: 'Real Estate',
@@ -1991,7 +1798,7 @@ applyLang();
       setTimeout(function () { e.target.style.transitionDelay = ''; }, 1200);
     });
   }, { threshold: 0.15 });
-  document.querySelectorAll('main section h2, .lead, .pain-kicker, .grid4>div, .pain-card, .why-card, .testimonial, .agent-card, .incentive-card, .section-visual, .incentive-note, .fit li, .steps li, .stat, .faq details, .apply p, .apply .btn, .cta-band .wrap>*').forEach(function (el, k) {
+  document.querySelectorAll('main section h2, .lead, .grid4 div, .fit li, .steps li, .stat, .faq details, .apply p').forEach(function (el, k) {
     el.classList.add('rv'); el.style.transitionDelay = (k % 4) * 90 + 'ms'; io.observe(el);
   });
 })();
@@ -2085,38 +1892,6 @@ applyLang();
   const c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
   if (c && (c.saveData || /(^|-)2g$/.test(c.effectiveType || ''))) document.documentElement.classList.add('lite');
 })();
-
-/* ---------- Engagement: reading progress + smart sticky button ---------- */
-(function () {
-  const bar = document.querySelector('.scroll-progress i');
-  let ticking = false;
-  function paint() {
-    ticking = false;
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-    if (bar) bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
-  }
-  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(paint); } }, { passive: true });
-  window.addEventListener('resize', paint);
-  paint();
-
-  const cta = document.querySelector('.mobile-cta'), heroBtn = document.querySelector('.hero .btn'), apply = document.querySelector('.apply');
-  if (!cta || !('IntersectionObserver' in window)) { if (cta) cta.classList.add('show'); return; }
-  let heroGone = false, applyIn = false;
-  function upd() { cta.classList.add('show'); }  /* always visible */
-  if (heroBtn) new IntersectionObserver(function (es) { const e = es[0]; heroGone = !e.isIntersecting && e.boundingClientRect.top < 0; upd(); }).observe(heroBtn);
-  if (apply) new IntersectionObserver(function (es) { applyIn = es[0].isIntersecting; upd(); }, { threshold: 0.25 }).observe(apply);
-})();
-</script>
-
-<script>
-/* Production image safety: all primary images are local Vercel assets. */
-document.querySelectorAll('img').forEach(function (img) {
-  img.addEventListener('error', function () {
-    console.error('Image failed to load:', img.currentSrc || img.src, img.alt || '');
-    img.classList.add('image-load-failed');
-  });
-});
 </script>
 </body>
 </html>
