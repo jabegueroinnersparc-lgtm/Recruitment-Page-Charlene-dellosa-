@@ -1095,6 +1095,48 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
   footer .soc a{min-width:0;height:48px;padding:0 12px}
   .to-top{top:18px;right:16px;width:40px;height:40px}
 }
+
+/* =====================================================================
+   DESKTOP: floating button removed (phones only) + premium navigation bar
+   ===================================================================== */
+@media(min-width:641px){html body .mobile-cta.btn[data-open]{display:none!important}}
+
+.bar{transition:background .35s ease,box-shadow .35s ease}
+.bar::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(184,144,47,.85) 22%,rgba(233,217,166,.95) 50%,rgba(184,144,47,.85) 78%,transparent);opacity:.75}
+.brand{display:inline-flex;align-items:center;color:var(--cream);text-decoration:none}
+.brand-mark{display:none}
+.nav-links{display:none}
+section[id]{scroll-margin-top:84px}
+
+@media(min-width:901px){
+  .bar{background:linear-gradient(180deg,rgba(6,36,28,.96),rgba(11,59,46,.9));border-bottom:0}
+  .bar .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:28px;padding-top:18px;padding-bottom:18px;transition:padding .35s ease}
+  .bar.scrolled .wrap{padding-top:10px;padding-bottom:10px}
+  .bar.scrolled{box-shadow:0 16px 36px -20px rgba(0,0,0,.7)}
+  .brand{gap:13px;justify-self:start}
+  .brand-mark{display:grid;place-items:center;flex:none;width:42px;height:42px;border-radius:50%;font:400 16px/1 var(--serif);letter-spacing:.05em;color:var(--dark);background:linear-gradient(135deg,#EBD07F,#B8902F);box-shadow:0 0 0 3px rgba(233,217,166,.16),0 10px 20px -8px rgba(0,0,0,.7);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .brand:hover .brand-mark{transform:rotate(-10deg) scale(1.06)}
+  .brand-name{font-family:var(--serif);font-size:20px;letter-spacing:.01em;white-space:nowrap}
+
+  .nav-links{display:flex;gap:4px;padding:5px;border:1px solid rgba(233,217,166,.2);border-radius:999px;background:rgba(233,217,166,.05);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .nav-links a{position:relative;padding:9px 18px;border-radius:999px;font:600 14px var(--sans);letter-spacing:.02em;white-space:nowrap;color:var(--pale-gold);text-decoration:none;transition:color .25s,background .3s,box-shadow .3s}
+  .nav-links a:hover{color:#fff;background:rgba(233,217,166,.12)}
+  .nav-links a.active{color:var(--dark);background:linear-gradient(135deg,#EBD07F,#C9A23E);box-shadow:0 6px 16px -6px rgba(184,144,47,.8)}
+  .nav-links a:focus-visible,.bar .link:focus-visible,.brand:focus-visible{outline:2px solid var(--pale-gold);outline-offset:3px}
+
+  .barr{justify-self:end;gap:14px}
+  .bar .lang{padding:3px;border:1px solid rgba(233,217,166,.28);background:rgba(0,0,0,.18)}
+  .bar .lang button{border-radius:999px;padding:6px 13px}
+  .bar .lang button[aria-pressed="true"]{background:linear-gradient(135deg,#EBD07F,#C9A23E);color:var(--dark)}
+  .bar .link{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:9px;padding:12px 24px;border:0;border-radius:999px;font:700 15px var(--sans);letter-spacing:.01em;color:var(--dark);background:linear-gradient(135deg,#E3C46A 0%,#B8902F 60%,#9C7A22 100%);box-shadow:0 12px 24px -10px rgba(184,144,47,.85),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s}
+  .bar .link::before{content:"";position:absolute;top:0;bottom:0;left:-70%;width:40%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.55),transparent);transform:skewX(-20deg);animation:btnShine 5.5s 3s ease-in-out infinite;pointer-events:none}
+  .bar .link::after{content:"\2192";transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .bar .link:hover{background:linear-gradient(135deg,#EDD27E 0%,#C79B34 60%,#A8842A 100%);color:var(--dark);transform:translateY(-2px);box-shadow:0 16px 28px -10px rgba(184,144,47,.95),inset 0 1px 0 rgba(255,255,255,.5)}
+  .bar .link:hover::after{transform:translateX(4px)}
+}
+@media(min-width:641px) and (max-width:900px){
+  .bar .link{background:linear-gradient(135deg,#E3C46A,#B8902F);color:var(--dark);border:0;font-weight:700}
+}
 </style>
 </head>
 <body>
@@ -1137,7 +1179,13 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
 
 <header class="bar">
   <div class="wrap">
-    <span class="brand">Charlene Dellosa Real Estate</span>
+    <a class="brand" href="#" aria-label="Charlene Dellosa Real Estate"><span class="brand-mark" aria-hidden="true">CD</span><span class="brand-name">Charlene Dellosa Real Estate</span></a>
+    <nav class="nav-links" aria-label="Page sections">
+      <a href="#why" data-i="nav_why">Why us</a>
+      <a href="#team" data-i="nav_team">The team</a>
+      <a href="#steps" data-i="nav_steps">How it works</a>
+      <a href="#faq" data-i="nav_faq">FAQ</a>
+    </nav>
     <div class="barr">
       <div class="lang" role="group" aria-label="Language">
         <button type="button" data-lang="en" aria-pressed="true">EN</button>
@@ -1238,7 +1286,7 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
   </div>
 </section>
 
-<section class="why-team">
+<section class="why-team" id="why">
   <div class="wrap">
     
     <h2 data-i="why_h">Why Charlene’s team?</h2>
@@ -1252,7 +1300,7 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
   </div>
 </section>
 
-<section class="agent-gallery">
+<section class="agent-gallery" id="team">
   <div class="wrap">
     <p class="pain-kicker" data-i="agents_kicker">Learn together. Grow together.</p>
     <h2 data-i="agents_h">A closer look at the team</h2>
@@ -1303,7 +1351,7 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
   </div>
 </section>
 
-<section class="joining">
+<section class="joining" id="steps">
   <div class="wrap">
     <div class="joining-heading">
       <h2 data-i="how_h">Your next steps</h2>
@@ -1343,7 +1391,7 @@ footer .fine{margin:34px auto 0;padding:22px 20px 0;max-width:560px;border-top:1
   </div>
 </section>
 
-<section class="faq">
+<section class="faq" id="faq">
   <div class="wrap">
     <h2 data-i="faq_h">Good questions to ask before you join</h2>
     <details><summary data-i="q1">Do I need a license to join or get started?</summary>
@@ -1583,6 +1631,7 @@ const TL = {
   q9: 'Paano ako makakapag-apply sa real estate team ni Charlene Dellosa?',
   a9: 'Sagutan ang maikling recruitment questionnaire sa page na ito. Susuriin ng team ni Charlene Dellosa ang mga sagot mo at kokontakin ka tungkol sa training, mentorship, at posibleng susunod na hakbang.',
   mid_h: 'Handa ka na bang alamin kung ito na ang susunod mong hakbang?',
+  nav_why: 'Bakit kami', nav_team: 'Ang team', nav_steps: 'Paano ito gumagana', nav_faq: 'Mga tanong',
   apply_h: 'Curious if this team is the right fit for you?',
   apply_p: 'Answer six quick questions. The team will review your answers and follow up about possible next steps.',
   foot_s: 'Real Estate',
@@ -2233,6 +2282,26 @@ applyLang();
 (function () {
   const b = document.querySelector('.to-top');
   if (b) b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+})();
+
+/* ---------- Navigation: shrink on scroll + highlight current section ---------- */
+(function () {
+  const bar = document.querySelector('.bar'), links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  if (!bar) return;
+  function stick() { bar.classList.toggle('scrolled', window.scrollY > 24); }
+  window.addEventListener('scroll', stick, { passive: true }); stick();
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  const map = {};
+  links.forEach(function (a) { const id = (a.getAttribute('href') || '').slice(1); const sec = id && document.getElementById(id); if (sec) map[id] = { a: a, sec: sec }; });
+  const io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      links.forEach(function (l) { l.classList.remove('active'); });
+      const k = e.target.id; if (map[k]) map[k].a.classList.add('active');
+    });
+  }, { rootMargin: '-35% 0px -55% 0px' });
+  Object.keys(map).forEach(function (k) { io.observe(map[k].sec); });
+  window.addEventListener('scroll', function () { if (window.scrollY < 300) links.forEach(function (l) { l.classList.remove('active'); }); }, { passive: true });
 })();
 </script>
 </body>
