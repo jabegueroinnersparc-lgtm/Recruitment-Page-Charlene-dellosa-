@@ -14,8 +14,9 @@ const CONFIG = {
 };
 
 /**
- * Quiz content lives in the spreadsheet tabs below.
- * Run setupQuizSheets() once from the Apps Script editor to create and seed them.
+ * The live quiz uses the default arrays below.
+ * The Google Sheet quiz tabs are retained for reference/setup but are not used
+ * by getQuiz_() unless you restore the sheet-based implementation.
  */
 const QUIZ_QUESTIONS_SHEET = 'Quiz Questions';
 const QUIZ_OPTIONS_SHEET = 'Quiz Options';
@@ -45,9 +46,9 @@ const DEFAULT_QUIZ_OPTIONS = [
   ['experience', 1, 'Yes, 2 years or more', 'Oo, 2 taon o higit pa'],
   ['experience', 2, 'Yes, less than 2 years', 'Oo, wala pang 2 taon'],
   ['experience', 3, 'No experience yet', 'Wala pang experience'],
-  ['hours', 1, 'Full-time (40+ hours a week)', 'Full-time (40+ oras kada linggo)'],
-  ['hours', 2, 'Part-time (15 to 39 hours a week)', 'Part-time (15 hanggang 39 oras kada linggo)'],
-  ['hours', 3, 'Fewer than 15 hours a week', 'Wala pang 15 oras kada linggo'],
+  ['hours', 1, '6–8 hours a day', '6–8 oras bawat araw'],
+  ['hours', 2, '3–5 hours a day', '3–5 oras bawat araw'],
+  ['hours', 3, '1–2 hours a day', '1–2 oras bawat araw'],
   ['commission', 1, 'Comfortable. I can cover my needs while I build my sales', 'Komportable ako. Kaya kong tustusan ang pangangailangan ko habang bumubuo ng benta'],
   ['commission', 2, 'Okay with it, but I need income soon', 'Okay ako rito, pero kailangan ko ng kita agad'],
   ['commission', 3, 'I need a fixed salary', 'Kailangan ko ng fixed na sahod'],
@@ -126,74 +127,66 @@ function orderValue_(value, fallback) {
 }
 
 function getQuiz_() {
-  const ss = getSpreadsheet_();
-  const questionsSheet = ss.getSheetByName(QUIZ_QUESTIONS_SHEET);
-  const optionsSheet = ss.getSheetByName(QUIZ_OPTIONS_SHEET);
-  if (!questionsSheet || !optionsSheet) {
-    throw new Error('Quiz sheets are missing. Run setupQuizSheets() once from the Apps Script editor.');
-  }
-  const qRows = sheetRows_(questionsSheet, QUIZ_QUESTION_HEADERS.length);
-  const optionRows = sheetRows_(optionsSheet, QUIZ_OPTION_HEADERS.length);
-  const questions = [];
-  const byId = Object.create(null);
-  const ids = Object.create(null);
-  const labels = Object.create(null);
+  // The live quiz intentionally uses the default questions below instead of
+  // reading the Quiz Questions and Quiz Options tabs from Google Sheets.
+  // Edit DEFAULT_QUIZ_QUESTIONS and DEFAULT_QUIZ_OPTIONS above to change the quiz.
+  const optionsById = Object.create(null);
 
-  qRows.forEach(function (row, index) {
+  DEFAULT_QUIZ_OPTIONS.forEach(function (row, index) {
+    const id = cellText_(row[0]).toLowerCase();
+    const en = clean_(row[2], 500);
+    const tl = clean_(row[3], 500);
+    if (!id || !en || !tl) {
+      throw new Error('Invalid default quiz option at row ' + (index + 1) + '.');
+    }
+    if (!optionsById[id]) optionsById[id] = [];
+    optionsById[id].push({
+      t: en,
+      tl: tl,
+      order: orderValue_(row[1], index + 1),
+      sourceOrder: index
+    });
+  });
+
+  const questions = DEFAULT_QUIZ_QUESTIONS.map(function (row, index) {
     const id = cellText_(row[2]).toLowerCase();
     const label = clean_(row[3], 80);
     const q = clean_(row[4], 800);
     const tl = clean_(row[5], 800);
-    if (!id && !label && !q && !tl) return; // ignore blank rows
-    // Only explicit active values are live. Blank rows are treated as drafts.
-    const activeText = cellText_(row[0]).toLowerCase();
-    const isActive = ['true', 'yes', 'on', '1', 'active'].indexOf(activeText) >= 0;
-    if (!isActive) return;
-    if (!id || !label || !q || !tl) {
-      throw new Error(
-        'Incomplete active quiz row ' + (index + 2) + ' in "' + QUIZ_QUESTIONS_SHEET + '". ' +
-        'Fill in Active, Question ID, Short label, Question (English), and Question (Tagalog), ' +
-        'or set Active to FALSE for a draft row.'
-      );
+
+    if (!row[0] || !id || !label || !q || !tl) {
+      throw new Error('Invalid default quiz question at row ' + (index + 1) + '.');
     }
-    if (ids[id]) throw new Error('Question IDs must be unique. Duplicate ID: ' + id);
-    const labelKey = label.toLowerCase();
-    if (labels[labelKey]) throw new Error('Short labels must be unique because they are used as applicant-sheet columns: ' + label);
-    ids[id] = true;
-    labels[labelKey] = true;
-    const question = { id: id, label: label, q: q, tl: tl, order: orderValue_(row[1], index + 1), sourceOrder: index, options: [] };
-    byId[id] = question;
-    questions.push(question);
+
+    const options = (optionsById[id] || []).slice().sort(function (a, b) {
+      return a.order - b.order || a.sourceOrder - b.sourceOrder;
+    });
+
+    if (options.length < 2) {
+      throw new Error('Each default quiz question needs at least two answer choices: ' + label);
+    }
+
+    return {
+      id: id,
+      label: label,
+      q: q,
+      tl: tl,
+      options: options.map(function (option) {
+        return { t: option.t, tl: option.tl };
+      })
+    };
   });
 
-  if (!questions.length) throw new Error('No active quiz questions found in the "' + QUIZ_QUESTIONS_SHEET + '" tab.');
-
-  optionRows.forEach(function (row, index) {
-    const id = cellText_(row[0]).toLowerCase();
-    const en = clean_(row[2], 500);
-    const tl = clean_(row[3], 500);
-    if (!id && !en && !tl) return; // ignore blank rows
-    if (!byId[id]) return; // ignore options belonging to inactive or deleted questions
-    if (!en || !tl) throw new Error('Every active answer choice needs English and Tagalog text (question ID: ' + id + ').');
-    byId[id].options.push({ t: en, tl: tl, order: orderValue_(row[1], index + 1), sourceOrder: index });
-  });
-
-  questions.forEach(function (question) {
-    question.options.sort(function (a, b) { return a.order - b.order || a.sourceOrder - b.sourceOrder; });
-    if (question.options.length < 2) throw new Error('Each active question needs at least two answer choices: ' + question.label);
-    delete question.order;
-    delete question.sourceOrder;
-    question.options.forEach(function (option) { delete option.order; delete option.sourceOrder; });
-  });
-  // Sort by the order shown in the sheet, preserving sheet order for ties.
-  const orderById = Object.create(null);
-  qRows.forEach(function (row, index) {
-    const id = cellText_(row[2]).toLowerCase();
-    if (id) orderById[id] = { order: orderValue_(row[1], index + 1), row: index };
-  });
   questions.sort(function (a, b) {
-    return orderById[a.id].order - orderById[b.id].order || orderById[a.id].row - orderById[b.id].row;
+    const aRow = DEFAULT_QUIZ_QUESTIONS.find(function (row) {
+      return cellText_(row[2]).toLowerCase() === a.id;
+    });
+    const bRow = DEFAULT_QUIZ_QUESTIONS.find(function (row) {
+      return cellText_(row[2]).toLowerCase() === b.id;
+    });
+    return orderValue_(aRow[1], 0) - orderValue_(bRow[1], 0);
   });
+
   return questions;
 }
 
@@ -214,7 +207,7 @@ function getQuizJson_() {
  * Caching is no longer used, so there is nothing to clear.
  */
 function clearQuizCache() {
-  return 'Quiz cache is disabled. The latest Google Sheet values are used automatically.';
+  return 'Quiz cache is disabled. The default quiz values in Code.gs are used automatically.';
 }
 
 function applicantHeaders_(quiz) {
