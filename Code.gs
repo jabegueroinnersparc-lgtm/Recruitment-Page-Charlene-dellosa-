@@ -2,9 +2,8 @@
  * Charlene Dellosa – Agent Recruitment Landing Page
  * Google Apps Script + Google Sheets
  */
-// Short cache keeps page loads fast while allowing quiz edits to appear quickly.
-const QUIZ_CACHE_KEY = 'quiz_json_v1';
-const QUIZ_CACHE_SECONDS = 60;
+// Quiz questions are read directly from Google Sheets on every page load.
+// This prevents Vercel/Apps Script visitors from seeing stale cached questions.
 let spreadsheetInstance_;
 
 const CONFIG = {
@@ -34,7 +33,7 @@ const APPLICANT_FINAL_HEADERS = ['Review', 'Follow-up path', 'Status', 'Language
 const DEFAULT_QUIZ_QUESTIONS = [
   [true, 1, 'license', 'License', 'Do you have a PRC real estate license?', 'May PRC real estate license ka ba?'],
   [true, 2, 'experience', 'Experience', 'Have you worked in sales, customer service, or another client-facing role?', 'Nakapagtrabaho ka na ba sa sales, customer service, o ibang trabahong may kliyente?'],
-  [true, 3, 'hours', 'Weekly hours', 'How many hours per week can you commit to real estate?', 'Ilang oras kada linggo ang maibibigay mo sa real estate?'],
+  [true, 3, 'hours', 'Weekly hours', 'How many hours per day can you commit to real estate?', 'Ilang oras kada araw ang maibibigay mo sa real estate?'],
   [true, 4, 'commission', 'Commission', 'Real estate income is commission-based. How do you feel about that?', 'Ang kita sa real estate ay batay sa komisyon. Ano ang pakiramdam mo rito?'],
   [true, 5, 'marketing', 'Marketing', 'Are you ready to use your phone and social media to market listings and follow up leads?', 'Handa ka bang gumamit ng phone at social media para i-market ang listings at i-follow up ang leads?'],
   [true, 6, 'start_date', 'Start date', 'When can you start?', 'Kailan ka puwedeng magsimula?']
@@ -205,19 +204,17 @@ function quizForBrowser_(quiz) {
 }
 
 function getQuizJson_() {
-  const cache = CacheService.getScriptCache();
-  const cached = cache.get(QUIZ_CACHE_KEY);
-  if (cached) return cached;
-
-  const json = JSON.stringify(quizForBrowser_(getQuiz_()));
-  cache.put(QUIZ_CACHE_KEY, json, QUIZ_CACHE_SECONDS);
-  return json;
+  // Do not cache this value. The quiz is intentionally rebuilt from the
+  // current Google Sheet values for every page request.
+  return JSON.stringify(quizForBrowser_(getQuiz_()));
 }
 
-/** Run after editing Quiz Questions or Quiz Options to make changes appear immediately. */
+/**
+ * Kept for compatibility with older deployments or manual menu actions.
+ * Caching is no longer used, so there is nothing to clear.
+ */
 function clearQuizCache() {
-  CacheService.getScriptCache().remove(QUIZ_CACHE_KEY);
-  return 'Quiz cache cleared.';
+  return 'Quiz cache is disabled. The latest Google Sheet values are used automatically.';
 }
 
 function applicantHeaders_(quiz) {
