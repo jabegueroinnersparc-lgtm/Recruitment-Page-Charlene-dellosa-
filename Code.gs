@@ -10,7 +10,7 @@ let spreadsheetInstance_;
 const CONFIG = {
   SPREADSHEET_ID: '',      // Leave empty if this script is bound to your Sheet (Extensions > Apps Script)
   SHEET_NAME: 'Applicants',
-  NOTIFY_EMAIL: '',        // Type the email that should receive applicant alerts (recommended). Empty = the account that owns this script
+  NOTIFY_EMAIL: 'dellosacharlene1317@gmail.com',        // Type the email that should receive applicant alerts (recommended). Empty = the account that owns this script
   SEND_CONFIRMATION: true
 };
 
