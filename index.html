@@ -1177,25 +1177,6 @@ section[id]{scroll-margin-top:84px}
 })();
 </script>
 
-<header class="bar">
-  <div class="wrap">
-    <a class="brand" href="#" aria-label="Charlene Dellosa Real Estate"><span class="brand-mark" aria-hidden="true">CD</span><span class="brand-name">Charlene Dellosa Real Estate</span></a>
-    <nav class="nav-links" aria-label="Page sections">
-      <a href="#why" data-i="nav_why">Why us</a>
-      <a href="#team" data-i="nav_team">The team</a>
-      <a href="#steps" data-i="nav_steps">How it works</a>
-      <a href="#faq" data-i="nav_faq">FAQ</a>
-    </nav>
-    <div class="barr">
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="tl" aria-pressed="false">TL</button>
-      </div>
-      <button class="link" data-open data-i="cta">Start your next step</button>
-    </div>
-  </div>
-</header>
-
 <main>
 <div class="hero">
   <div class="hero-img">
@@ -2284,25 +2265,6 @@ applyLang();
   if (b) b.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
 })();
 
-/* ---------- Navigation: shrink on scroll + highlight current section ---------- */
-(function () {
-  const bar = document.querySelector('.bar'), links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
-  if (!bar) return;
-  function stick() { bar.classList.toggle('scrolled', window.scrollY > 24); }
-  window.addEventListener('scroll', stick, { passive: true }); stick();
-  if (!links.length || !('IntersectionObserver' in window)) return;
-  const map = {};
-  links.forEach(function (a) { const id = (a.getAttribute('href') || '').slice(1); const sec = id && document.getElementById(id); if (sec) map[id] = { a: a, sec: sec }; });
-  const io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      links.forEach(function (l) { l.classList.remove('active'); });
-      const k = e.target.id; if (map[k]) map[k].a.classList.add('active');
-    });
-  }, { rootMargin: '-35% 0px -55% 0px' });
-  Object.keys(map).forEach(function (k) { io.observe(map[k].sec); });
-  window.addEventListener('scroll', function () { if (window.scrollY < 300) links.forEach(function (l) { l.classList.remove('active'); }); }, { passive: true });
-})();
 </script>
 </body>
 </html>
