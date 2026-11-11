@@ -1275,12 +1275,25 @@ h2::after{content:"";display:block;width:56px;height:2px;margin:16px 0 0;backgro
 .why-card,.testimonial,.incentive-card,.agent-card,.grid4>div,.steps li{border-color:rgba(184,144,47,.22)}
 @media(hover:hover) and (pointer:fine){.why-card:hover,.testimonial:hover,.incentive-card:hover,.agent-card:hover,.grid4>div:hover,.steps li:hover{border-color:rgba(184,144,47,.6)}}
 @media(max-width:640px){section{padding:54px 0}}
+/* ===== Opening transition: curtain split after the monogram loader ===== */
+.page-loader{overflow:hidden}
+.loader-curtain{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.loader-curtain i{position:absolute;left:0;right:0;height:50.2%;background:radial-gradient(circle at 50% 100%,rgba(15,123,90,.28),transparent 45%),var(--dark);transition:transform 1s cubic-bezier(.76,0,.24,1) .38s,box-shadow .6s ease}
+.loader-curtain i:first-child{top:0;border-bottom:1px solid rgba(184,144,47,.8);box-shadow:0 1px 18px rgba(233,217,166,.35)}
+.loader-curtain i:last-child{bottom:0;background:radial-gradient(circle at 50% 0%,rgba(15,123,90,.28),transparent 45%),var(--dark);border-top:1px solid rgba(184,144,47,.8);box-shadow:0 -1px 18px rgba(233,217,166,.35)}
+.page-loader.is-opening{background:transparent;opacity:1;visibility:visible}
+.page-loader.is-opening .page-loader-inner{opacity:0;transform:scale(1.18);transition:opacity .45s ease,transform .6s cubic-bezier(.4,0,.2,1)}
+.page-loader.is-opening::after{opacity:0;transition:opacity .3s ease}
+.page-loader.is-opening .loader-curtain i:first-child{transform:translateY(-101%)}
+.page-loader.is-opening .loader-curtain i:last-child{transform:translateY(101%)}
+@media(prefers-reduced-motion:reduce){.loader-curtain i,.page-loader.is-opening .page-loader-inner{transition:none}}
 </style>
 </head>
 <body>
 <div class="scroll-progress" aria-hidden="true"><i></i></div>
 
 <div class="page-loader" id="page-loader" role="status" aria-live="polite" aria-hidden="true">
+  <div class="loader-curtain" aria-hidden="true"><i></i><i></i></div>
   <div class="page-loader-inner">
     <svg class="loader-monogram" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
       <defs><radialGradient id="lmGlow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#E9D9A6" stop-opacity=".55"/><stop offset="1" stop-color="#B8902F" stop-opacity="0"/></radialGradient></defs>
@@ -1302,6 +1315,7 @@ h2::after{content:"";display:block;width:56px;height:2px;margin:16px 0 0;backgro
   var released = false;
   function revealPage() {
     if (released) return;
+    if (loader && loader.classList.contains('is-opening')) return;
     released = true;
     document.body.classList.remove('loading');
     document.body.classList.add('page-ready');
@@ -2169,13 +2183,22 @@ applyLang();
     finished = true;
     const remaining = Math.max(0, 1900 - (Date.now() - startedAt));
     setTimeout(function () {
-      loader.classList.remove('is-visible');
-      loader.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('loading');
-      setTimeout(function () {
+      if (REDUCED) {
+        loader.classList.remove('is-visible');
+        loader.setAttribute('aria-hidden', 'true');
         loader.hidden = true;
         document.body.classList.add('page-ready');
-      }, REDUCED ? 0 : 480);
+        return;
+      }
+      /* Opening transition: monogram lifts away, the green curtain splits open */
+      loader.classList.add('is-opening');
+      loader.setAttribute('aria-hidden', 'true');
+      setTimeout(function () { document.body.classList.add('page-ready'); }, 320);
+      setTimeout(function () {
+        loader.classList.remove('is-visible', 'is-opening');
+        loader.hidden = true;
+      }, 1400);
     }, remaining);
   }
   document.body.classList.add('loading');
