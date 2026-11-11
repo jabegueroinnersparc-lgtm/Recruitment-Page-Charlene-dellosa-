@@ -1225,6 +1225,34 @@ h2::after{content:"";display:block;width:56px;height:2px;margin:16px 0 0;backgro
 .pain-card .answer{font-size:15px;letter-spacing:.03em;color:var(--gold);padding-top:18px}
 @media(max-width:900px){.pain-grid{gap:24px}.pain-card .pain-copy{padding:24px 24px 28px}}
 @media(max-width:640px){.pain-grid{grid-template-columns:1fr;gap:22px}.pain-card{border-radius:16px}.pain-card figure{aspect-ratio:4/3.4}.pain-card figure img{object-position:center 25%}.pain-card .pain-copy{padding:22px 20px 26px}.pain-card h3{font-size:24px}.btn{padding:13px 22px}}
+/* ===== Fit section: new photo + premium motion ===== */
+.fit{position:relative;overflow:hidden;background:radial-gradient(900px 420px at 8% 0%,rgba(255,255,255,.55),transparent 60%),linear-gradient(180deg,#F1E4B8,#E9D9A6)}
+.fit::before{content:"";position:absolute;right:-120px;bottom:-140px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(184,144,47,.22),transparent 68%);animation:fitGlow 9s ease-in-out infinite alternate;pointer-events:none}
+.fit .wrap{position:relative;z-index:1;gap:22px 64px}
+.fit .section-visual{border-radius:26px;box-shadow:0 0 0 8px rgba(255,255,255,.7),0 0 0 9px rgba(184,144,47,.55),0 40px 70px -28px rgba(11,59,46,.55);isolation:isolate}
+.fit .section-visual img{aspect-ratio:4/4.4;object-position:center 22%}
+.fit .section-visual::before{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;z-index:3;pointer-events:none;background:linear-gradient(105deg,transparent,rgba(255,255,255,.38),transparent);transform:skewX(-18deg);opacity:0}
+.fit .section-visual.in::before{animation:fitShine 1.6s .9s ease-out 1 both}
+.fit .section-visual:hover::before{animation:fitShine 1.1s ease-out 1 both}
+.fit .section-visual.in img{animation:fitDrift 22s ease-in-out 1.8s infinite alternate}
+.fit h2{font-size:clamp(30px,4.2vw,48px);line-height:1.08}
+.fit ul{gap:14px}
+.fit li{padding:18px 22px 18px 66px;border-radius:16px;border:1px solid rgba(184,144,47,.3);background:rgba(255,255,255,.92);backdrop-filter:blur(6px);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease,border-color .3s ease}
+.fit li::after{left:14px;width:36px;height:36px;margin-top:-18px;background:linear-gradient(135deg,rgba(15,123,90,.18),rgba(184,144,47,.22))}
+.fit li::before{left:25px;transform-origin:left bottom}
+.fit li.in::before{animation:fitTick .6s .35s cubic-bezier(.3,1.5,.5,1) both}
+@media(hover:hover) and (pointer:fine){.fit li:hover{transform:translateX(10px);border-color:var(--gold);box-shadow:0 22px 40px -22px rgba(11,59,46,.45)}}
+.faq details{border-radius:16px;background:#fff;border:1px solid rgba(184,144,47,.25);box-shadow:var(--sh1);transition:box-shadow .35s ease,border-color .3s ease}
+.faq details[open]{border-color:var(--gold);box-shadow:var(--sh2)}
+.faq summary{cursor:pointer;transition:color .25s ease}
+.faq summary:hover{color:var(--emerald)}
+@keyframes fitShine{0%{left:-70%;opacity:0}15%{opacity:1}100%{left:130%;opacity:0}}
+@keyframes fitDrift{from{transform:scale(1) translate3d(0,0,0)}to{transform:scale(1.07) translate3d(-1.2%,-1.5%,0)}}
+@keyframes fitGlow{from{transform:translate3d(0,0,0) scale(1)}to{transform:translate3d(-40px,-30px,0) scale(1.18)}}
+@keyframes fitTick{from{opacity:0;transform:rotate(-45deg) scale(.2)}to{opacity:1;transform:rotate(-45deg) scale(1)}}
+@media(max-width:900px){.fit .wrap{grid-template-columns:1fr;gap:26px}.fit .section-visual{margin:0 8px}.fit .section-visual img{aspect-ratio:5/4}.fit::before{width:260px;height:260px}}
+@media(max-width:640px){.fit .section-visual{border-radius:20px;box-shadow:0 0 0 6px rgba(255,255,255,.7),0 0 0 7px rgba(184,144,47,.55),0 28px 50px -26px rgba(11,59,46,.5)}.fit li{padding:16px 16px 16px 60px;border-radius:14px}.fit h2{font-size:clamp(28px,8vw,34px)}}
+@media(prefers-reduced-motion:reduce){.fit::before,.fit .section-visual.in img,.fit li.in::before,.fit .section-visual::before{animation:none!important}.fit li:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -1442,7 +1470,7 @@ h2::after{content:"";display:block;width:56px;height:2px;margin:16px 0 0;backgro
 
 <section class="fit">
   <div class="wrap">
-    <figure class="section-visual"><img class="js-lightbox-image" src="https://drive.google.com/thumbnail?id=1LO2reKXshILPUZ5iAi6FE2BhtmVXu022&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=1LO2reKXshILPUZ5iAi6FE2BhtmVXu022&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=1LO2reKXshILPUZ5iAi6FE2BhtmVXu022&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=1LO2reKXshILPUZ5iAi6FE2BhtmVXu022&amp;sz=w1200 1200w, https://drive.google.com/thumbnail?id=1LO2reKXshILPUZ5iAi6FE2BhtmVXu022&amp;sz=w1600 1600w" sizes="(max-width:900px) calc(100vw - 48px), 640px" alt="A confident real estate professional considering whether Charlene’s team is the right fit." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure>
+    <figure class="section-visual"><img class="js-lightbox-image" src="https://drive.google.com/thumbnail?id=19AXHagYzwNinVJ2gCnKVU08xJ-fpgp2j&amp;sz=w800" srcset="https://drive.google.com/thumbnail?id=19AXHagYzwNinVJ2gCnKVU08xJ-fpgp2j&amp;sz=w480 480w, https://drive.google.com/thumbnail?id=19AXHagYzwNinVJ2gCnKVU08xJ-fpgp2j&amp;sz=w800 800w, https://drive.google.com/thumbnail?id=19AXHagYzwNinVJ2gCnKVU08xJ-fpgp2j&amp;sz=w1200 1200w, https://drive.google.com/thumbnail?id=19AXHagYzwNinVJ2gCnKVU08xJ-fpgp2j&amp;sz=w1600 1600w" sizes="(max-width:900px) calc(100vw - 48px), 640px" alt="A confident real estate professional considering whether Charlene’s team is the right fit." width="1200" height="900" loading="lazy" decoding="async" referrerpolicy="no-referrer"></figure>
     <h2 data-i="fit_h">Could this team be right for you?</h2>
     <ul>
       <li data-i="f1">People who communicate clearly and follow up on time</li>
